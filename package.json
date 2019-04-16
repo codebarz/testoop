@@ -1,0 +1,23 @@
+{
+  "name": "oproject",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/whitehox/testoop.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/whitehox/testoop/issues"
+  },
+  "homepage": "https://github.com/whitehox/testoop#readme",
+  "devDependencies": {
+    "jest": "^24.7.1"
+  }
+}
