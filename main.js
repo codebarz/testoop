@@ -1,6 +1,5 @@
 let fs = require('fs');
-let loggedInUser = [];
-let dbData= JSON.parse(fs.readFileSync('db.json'));
+let dbData = JSON.parse(fs.readFileSync('db.json'));
 
 function Users (username, email, password, access) {
     this.username = username;
@@ -67,7 +66,7 @@ Users.prototype = {
             console.log("A user can not be created with this access level. Kindly use either admin or user");
         }
     },
-    searchUserById : function(id, access, searchType) {
+    searchSingleUser : function(id, access, searchType) {
         this.id = id;
         this.access = access;
         this.searchType = searchType;

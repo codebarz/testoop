@@ -22,6 +22,13 @@
       "email": "killidem@gmail.com",
       "password": "sha",
       "access": "admin"
+    },
+    {
+      "id": 3,
+      "username": "uchenna",
+      "email": "u@gmail.com",
+      "password": "45678",
+      "access": "admin"
     }
   ]
 }
