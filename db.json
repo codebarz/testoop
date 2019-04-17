@@ -15,6 +15,13 @@
       "email": "white@gmail.com",
       "password": "123",
       "access": "admin"
+    },
+    {
+      "id": 2,
+      "username": "killidem",
+      "email": "killidem@gmail.com",
+      "password": "sha",
+      "access": "admin"
     }
   ]
 }
