@@ -97,16 +97,30 @@ Users.prototype = {
             }
         }
     },
-    updateUser : function(id, username, access) {
-        this.id = id;
+    updateUser : function(username, password, newUsername, newEmail, newPassword, access) {
         this.username = username;
+        this.newUsername = newUsername;
+        this.password = password;
+        this.newPassword = newPassword;
         this.access = access;
+        this.newEmail = newEmail;
 
         if(this.access === "admin") {
-
+            for(let i in dbData.admin) {
+                if(this.username === dbData.admin[i].username && this.password === dbData.admin[i].password) {
+                    dbData.admin[i].username = this.newUsername;
+                    dbData.admin[i].password = this.newPassword;
+                    dbData.admin[i].email = this.newEmail;
+                    fs.writeFileSync('db.json', JSON.stringify(dbData, null, 2));
+                    console.log("Your account has been successfully created");
+                }
+                else {
+                    console.log("Incorrect username or password");
+                }
+            }
         }
     }
 };
-//Users.prototype.searchUserById(1, "admin", "admin");
+Users.prototype.updateUser("whitehox", "123", "white", "whitehox@gmail.com", "1234", "admin");
 
 module.exports = Users;

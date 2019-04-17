@@ -11,9 +11,9 @@
   "admin": [
     {
       "id": 1,
-      "username": "whitehox",
-      "email": "white@gmail.com",
-      "password": "123",
+      "username": "white",
+      "email": "whitehox@gmail.com",
+      "password": "1234",
       "access": "admin"
     },
     {
