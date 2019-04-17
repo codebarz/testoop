@@ -72,6 +72,7 @@ Users.prototype = {
             if (this.searchType === "admin") {
                 for (let i in dbData.admin) {
                     dbData.admin[i].id === this.id ? console.log(dbData.admin[i]) : console.log("");
+                    return dbData.admin[i];
                 }
             }
             else if(this.searchType === "users") {

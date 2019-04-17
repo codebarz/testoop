@@ -7,9 +7,14 @@ describe("To test if all normal user activities", () => {
         console.log(createdUser);
         expect(createdUser).toEqual([ '{"username":"whitehox","email":"white@gmail.com","password":"123","access":"admin"}' ]);
     });
-    // test("should check if a  user can be checked with his ID", () => {
-    //     let result = functions.prototype.searchUserById(1, "admin", "admin");
-    //     console.log(result);
-    //     expected("tega").toBe("tega");
-    // })
+    test("should check if a  user can be checked with his ID", () => {
+        let result = [];
+        let search = functions.prototype.searchSingleUserById(1, "admin");
+        result.push(search);
+        expect(result).toEqual([{ id: 1,
+            username: 'white',
+            email: 'whitehox@gmail.com',
+            password: '1234',
+            access: 'admin' }]);
+    })
 });
