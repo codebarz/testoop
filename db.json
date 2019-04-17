@@ -1,26 +1,11 @@
 {
-  "users": [
-    {
-      "id": 1,
-      "username": "oketegah",
-      "email": "oketegah@gmail.com",
-      "password": "11861538da",
-      "access": "user"
-    }
-  ],
+  "users": [],
   "admin": [
     {
       "id": 1,
       "username": "white",
       "email": "whitehox@gmail.com",
       "password": "1234",
-      "access": "admin"
-    },
-    {
-      "id": 2,
-      "username": "killidem",
-      "email": "killidem@gmail.com",
-      "password": "sha",
       "access": "admin"
     },
     {

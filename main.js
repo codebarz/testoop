@@ -66,25 +66,22 @@ Users.prototype = {
             console.log("A user can not be created with this access level. Kindly use either admin or user");
         }
     },
-    searchSingleUser : function(id, access, searchType) {
+    searchSingleUserById : function(id, accountType) {
         this.id = id;
-        this.access = access;
-        this.searchType = searchType;
-        if(this.access === "admin") {
+        this.searchType = accountType;
             if (this.searchType === "admin") {
                 for (let i in dbData.admin) {
-                    (dbData.admin[i].id === this.id ? console.log(dbData.admin[i]) : console.log("User does not exist"));
+                    dbData.admin[i].id === this.id ? console.log(dbData.admin[i]) : console.log("");
                 }
             }
             else if(this.searchType === "users") {
-                for (let i in dbData.admin) {
-                    (dbData.admin[i].id === this.id ? console.log(dbData.admin[i]) : console.log("User does not exist"));
+                for (let i in dbData.users) {
+                    dbData.users[i].id === this.id ? console.log(dbData.users[i]) : console.log("");
                 }
             }
             else {
-                console.log("Kindly search for either a user or an admin");
+                console.log("Kindly search using either users or an admin as account type");
             }
-        }
     },
     updateUser : function(username, password, newUsername, newEmail, newPassword, access) {
         this.username = username;
@@ -124,5 +121,5 @@ Users.prototype = {
         }
     }
 };
-
+//Users.prototype.searchSingleUserById(2, "admin");
 module.exports = Users;
