@@ -1,4 +1,5 @@
 let fs = require('fs');
+let order = require('./order');
 let dbData = JSON.parse(fs.readFileSync('db.json'));
 
 function Users (username, email, password, access) {
@@ -122,7 +123,10 @@ Users.prototype = {
                 }
             }
         }
+    },
+    makeOrder : function () {
+
     }
 };
-//Users.prototype.searchSingleUserById(2, "admin");
+//Users.prototype.searchSingleUserById(1, "admin");
 module.exports = Users;
