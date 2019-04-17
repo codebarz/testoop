@@ -10,38 +10,57 @@ function Users(username, email, password, access) {
 Users.prototype = {
     constructor : Users,
     createUser : function(id) {
-        this.id = id;
-        if(dbData.length === 0) {
-            this.id = 1;
-            dbData.push({id : this.id, username : this.username, email: this.email, password: this.password, access : this.access});
-            fs.writeFileSync('db.json', JSON.stringify(dbData,null,2))
+        if(this.access === "users" || this.access === "user") {
+            this.id = id;
+            if (dbData.users.length === 0) {
+                this.id = 1;
+                dbData.users.push({
+                    id: this.id,
+                    username: this.username,
+                    email: this.email,
+                    password: this.password,
+                    access: this.access
+                });
+                fs.writeFileSync('db.json', JSON.stringify(dbData, null, 2))
+                console.log("Your account has been successfully created");
+            } else {
+                this.id = (dbData.users[dbData.users.length - 1].id) + 1;
+                dbData.users.push({
+                    id: this.id,
+                    username: this.username,
+                    email: this.email,
+                    password: this.password,
+                    access: this.access
+                });
+                fs.writeFileSync('db.json', JSON.stringify(dbData, null, 2));
+                console.log("Your account has been successfully created");
+            }
         }
-        else {
-            this.id = (dbData[dbData.length-1].id) + 1;
-            dbData.push({id : this.id, username : this.username, email: this.email, password: this.password, access : this.access});
-            fs.writeFileSync('db.json', JSON.stringify(dbData,null,2));
+        else if (this.access === "admin" || this.access === "administrator") {
+            this.id = id;
+            if (dbData.admin.length === 0) {
+                this.id = 1;
+                dbData.admin.push({
+                    id: this.id,
+                    username: this.username,
+                    email: this.email,
+                    password: this.password,
+                    access: this.access
+                });
+                fs.writeFileSync('db.json', JSON.stringify(dbData, null, 2))
+                console.log("Your administrator account has been successfully created");
+            } else {
+                this.id = (dbData.admin[dbData.admin.length - 1].id) + 1;
+                dbData.admin.push({
+                    id: this.id,
+                    username: this.username,
+                    email: this.email,
+                    password: this.password,
+                    access: this.access
+                });
+                fs.writeFileSync('db.json', JSON.stringify(dbData, null, 2));
+                console.log("Your administrator account has been successfully created");
+            }
         }
     }
 };
-
-let userOne = new Users("oketega", "oketegah@gmail.com", "1234", "admin");
-let userTwo = new Users("mike", "mike@gmail.com", "1234", "user");
-let userThree = new Users("mike", "mikel@gmail.com", "5234", "user");
-let userFour = new Users("Tolu", "tolu@yahoo.com", "3344", "user");
-let userFive = new Users("Ibrahim", "josephibrahi@gmail.com", "3388", "admin");
-userFive.createUser();
-
-console.log(dbData);
-//let a=[];
-//let data1=[];
- //var data = fs.readFileSync('db.json', 'utf8', function (error, data) {
-   //return JSON.parse(data)
-     //return data;
-//});
-
-//console.log(data);
- //a.push.apply(a,data1) ;
-//a.push.apply(a,data) ;
-
-//data.push({name: 1});
- //console.log(a);

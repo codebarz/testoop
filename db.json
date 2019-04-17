@@ -1,37 +1,20 @@
-[
-  {
-    "id": 1,
-    "username": "mike",
-    "email": "mikel@gmail.com",
-    "password": "5234",
-    "access": "user"
-  },
-  {
-    "id": 2,
-    "username": "oketega",
-    "email": "oketegah@gmail.com",
-    "password": "1234",
-    "access": "admin"
-  },
-  {
-    "id": 3,
-    "username": "mike",
-    "email": "mike@gmail.com",
-    "password": "1234",
-    "access": "user"
-  },
-  {
-    "id": 4,
-    "username": "Tolu",
-    "email": "tolu@yahoo.com",
-    "password": "3344",
-    "access": "user"
-  },
-  {
-    "id": 5,
-    "username": "Ibrahim",
-    "email": "josephibrahi@gmail.com",
-    "password": "3388",
-    "access": "admin"
-  }
-]
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "oketegah",
+      "email": "oketegah@gmail.com",
+      "password": "11861538da",
+      "access": "user"
+    }
+  ],
+  "admin": [
+    {
+      "id": 1,
+      "username": "whitehox",
+      "email": "white@gmail.com",
+      "password": "123",
+      "access": "admin"
+    }
+  ]
+}
