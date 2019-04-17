@@ -74,22 +74,12 @@ Users.prototype = {
         if(this.access === "admin") {
             if (this.searchType === "admin") {
                 for (let i in dbData.admin) {
-                    if (dbData.admin[i].id === this.id) {
-                        console.log(dbData.admin[i]);
-                    }
-                    else {
-                        console.log("User does not exist");
-                    }
+                    (dbData.admin[i].id === this.id ? console.log(dbData.admin[i]) : console.log("User does not exist"));
                 }
             }
             else if(this.searchType === "users") {
                 for (let i in dbData.admin) {
-                    if (dbData.admin[i].id === this.id) {
-                        console.log(dbData.admin[i]);
-                    }
-                    else {
-                        console.log("User does not exist");
-                    }
+                    (dbData.admin[i].id === this.id ? console.log(dbData.admin[i]) : console.log("User does not exist"));
                 }
             }
             else {
@@ -112,7 +102,21 @@ Users.prototype = {
                     dbData.admin[i].password = this.newPassword;
                     dbData.admin[i].email = this.newEmail;
                     fs.writeFileSync('db.json', JSON.stringify(dbData, null, 2));
-                    console.log("Your account has been successfully created");
+                    console.log("Your account has been successfully updated");
+                }
+                else {
+                    console.log("Incorrect username or password");
+                }
+            }
+        }
+        else if(this.access === "users") {
+            for(let i in dbData.users) {
+                if(this.username === dbData.users[i].username && this.password === dbData.users[i].password) {
+                    dbData.users[i].username = this.newUsername;
+                    dbData.users[i].password = this.newPassword;
+                    dbData.users[i].email = this.newEmail;
+                    fs.writeFileSync('db.json', JSON.stringify(dbData, null, 2));
+                    console.log("Your account has been successfully updated");
                 }
                 else {
                     console.log("Incorrect username or password");
@@ -121,6 +125,5 @@ Users.prototype = {
         }
     }
 };
-Users.prototype.updateUser("whitehox", "123", "white", "whitehox@gmail.com", "1234", "admin");
 
 module.exports = Users;
