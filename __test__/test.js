@@ -1,4 +1,5 @@
 const functions = require("../main");
+const admin = require("../admin");
 describe("To test if all normal user activities", () => {
     test("should check if a user was successfully created", () => {
         let createdUser = [];
@@ -16,5 +17,10 @@ describe("To test if all normal user activities", () => {
             email: 'whitehox@gmail.com',
             password: '1234',
             access: 'admin' }]);
+        expect(result).toBeDefined();
     })
+});
+
+describe("To test all administrator priviledges", () => {
+
 });

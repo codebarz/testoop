@@ -78,10 +78,12 @@ Users.prototype = {
             else if(this.searchType === "users") {
                 for (let i in dbData.users) {
                     dbData.users[i].id === this.id ? console.log(dbData.users[i]) : console.log("");
+                    return dbData.users[i];
                 }
             }
             else {
                 console.log("Kindly search using either users or an admin as account type");
+                return "Kindly search using either users or an admin as account type";
             }
     },
     updateUser : function(username, password, newUsername, newEmail, newPassword, access) {
