@@ -84,6 +84,4 @@ Admin.prototype = {
     }
 };
 
-Admin.prototype.deleteAllUsers("admin");
-
 module.exports = Admin;

@@ -124,19 +124,16 @@ Users.prototype = {
             }
         }
     },
-    makeOrder : function(userId, access, ...userProducts) {
-        this.access = access;
+    makeOrder : function(userId, ...userProducts) {
+        this.userid = userId;
         this.userProducts = userProducts;
-        if(this.access !== "user") {
-            console.log("Only users can make orders");
-        }
-        else {
-            let newOrder = new order(this.userProducts);
-            console.log(newOrder.createOrder());
-        }
-
+        let newOrder = new order();
+        let orderForm = newOrder.constructor.prototype.createOrder();
+        orderForm.products = this.userProducts;
+        orderForm.userid = this.userid;
+        dbData.orders.push(orderForm);
+        fs.writeFileSync('db.json', JSON.stringify(dbData, null, 2));
+        return orderForm;
     }
 };
-Users.prototype.makeOrder(1, "user","garri", "rice");
-//Users.prototype.searchSingleUserById(1, "admin");
 module.exports = Users;

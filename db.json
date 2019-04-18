@@ -16,5 +16,18 @@
       "access": "admin"
     }
   ],
-  "orders": []
+  "orders": [
+    {
+      "timeOfOrder": "9:7",
+      "dateOfOrder": "18/3/2019",
+      "id": 1,
+      "products": [
+        "user",
+        "garri",
+        "rice",
+        "beans"
+      ],
+      "userid": 2
+    }
+  ]
 }
