@@ -124,9 +124,19 @@ Users.prototype = {
             }
         }
     },
-    makeOrder : function () {
+    makeOrder : function(userId, access, ...userProducts) {
+        this.access = access;
+        this.userProducts = userProducts;
+        if(this.access !== "user") {
+            console.log("Only users can make orders");
+        }
+        else {
+            let newOrder = new order(this.userProducts);
+            console.log(newOrder.createOrder());
+        }
 
     }
 };
+Users.prototype.makeOrder(1, "user","garri", "rice");
 //Users.prototype.searchSingleUserById(1, "admin");
 module.exports = Users;
