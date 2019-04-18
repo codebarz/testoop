@@ -44,7 +44,6 @@ describe("To test all order functionality", () => {
        console.log(checkId());
        let toBeTested = users.prototype.makeOrder(2, "garri", "rice", "beans");
        result.push(toBeTested);
-       console.log(result);
        expect(result).toEqual([{ userid: 2, timeOfOrder: orderTime, dateOfOrder: orderDate, id: currentid, products: [ 'garri', 'rice', 'beans' ] }]);
    });
 });

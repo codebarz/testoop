@@ -28,6 +28,28 @@
         "beans"
       ],
       "userid": 2
+    },
+    {
+      "timeOfOrder": "9:38",
+      "dateOfOrder": "18/3/2019",
+      "id": 2,
+      "products": [
+        "garri",
+        "rice",
+        "beans"
+      ],
+      "userid": 2
+    },
+    {
+      "timeOfOrder": "9:47",
+      "dateOfOrder": "18/3/2019",
+      "id": 3,
+      "products": [
+        "garri",
+        "rice",
+        "beans"
+      ],
+      "userid": 2
     }
   ]
 }

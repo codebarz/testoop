@@ -1,4 +1,5 @@
 let Users = require("./main");
+let Order = require("./order");
 let fs = require('fs');
 let dbData= JSON.parse(fs.readFileSync('db.json'));
 
@@ -83,5 +84,5 @@ Admin.prototype = {
         }
     }
 };
-
+Object.assign(Admin.prototype, Order.prototype);
 module.exports = Admin;

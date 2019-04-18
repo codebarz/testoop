@@ -128,7 +128,7 @@ Users.prototype = {
         this.userid = userId;
         this.userProducts = userProducts;
         let newOrder = new order();
-        let orderForm = newOrder.constructor.prototype.createOrder();
+        let orderForm = newOrder.constructor.createOrder();
         orderForm.products = this.userProducts;
         orderForm.userid = this.userid;
         dbData.orders.push(orderForm);
