@@ -22,34 +22,33 @@
       "dateOfOrder": "18/3/2019",
       "id": 1,
       "products": [
-        "user",
-        "garri",
         "rice",
         "beans"
       ],
-      "userid": 2
+      "userid": 2,
+      "updatedOn": "4/3/2019 at 12:41"
     },
     {
       "timeOfOrder": "9:38",
       "dateOfOrder": "18/3/2019",
       "id": 2,
       "products": [
-        "garri",
-        "rice",
-        "beans"
+        "kilichi",
+        "asun"
       ],
-      "userid": 2
+      "userid": 2,
+      "updatedOn": "4/3/2019 at 12:39"
     },
     {
       "timeOfOrder": "9:47",
       "dateOfOrder": "18/3/2019",
       "id": 3,
       "products": [
-        "garri",
-        "rice",
-        "beans"
+        "pomo",
+        "asun"
       ],
-      "userid": 2
+      "userid": 2,
+      "updatedOn": "4/3/2019 at 12:41"
     }
   ]
 }

@@ -46,6 +46,30 @@ Order.prototype = {
             return result;
         }
     },
+    updateSingleOrder : function(orderid, access, ...newOrder) {
+        this.id = orderid;
+        this.newOrder = newOrder;
+        this.access = access;
+        let date = new Date();
+        let updatedOn = `${date.getDay()}/${date.getMonth()}/${date.getFullYear()} at ${date.getHours()}:${date.getMinutes()}`;
+
+        if (this.access === "admin") {
+            for (let i in dbData.orders) {
+                if(dbData.orders[i].id === this.id) {
+                    dbData.orders[i].products = this.newOrder;
+                    dbData.orders[i].updatedOn = updatedOn;
+                    fs.writeFileSync('db.json', JSON.stringify(dbData, null, 2));
+                    console.log("The order has been successfully updated");
+                }
+                else {
+                    console.log("There is no Id with thi is user");
+                }
+            }
+        }
+        else {
+            console.log("You are not allowed to update any order");
+        }
+    },
     deleteSingleOrder: function(id, access) {
         this.id = id;
         this.access = access;
@@ -76,4 +100,5 @@ Order.prototype = {
         }
     }
 };
+Order.prototype.updateSingleOrder(1, "admin", "rice", "beans");
 module.exports = Order;
