@@ -70,21 +70,34 @@ Users.prototype = {
     searchSingleUserById : function(id, accountType) {
         this.id = id;
         this.searchType = accountType;
+        let result = [];
             if (this.searchType === "admin") {
-                for (let i in dbData.admin) {
-                    dbData.admin[i].id === this.id ? console.log(dbData.admin[i]) : console.log("");
-                    return dbData.admin[i];
+                for(let i in dbData.admin) {
+                    if(dbData.admin[i].id === this.id) {
+                        result.pop();
+                        result.push(dbData.admin[i]);
+                    }
                 }
             }
             else if(this.searchType === "users") {
                 for (let i in dbData.users) {
-                    dbData.users[i].id === this.id ? console.log(dbData.users[i]) : console.log("");
-                    return dbData.users[i];
+                    if(dbData.users[i].id === this.id) {
+                        result.pop();
+                        result.push(dbData.users[i]);
+                    }
                 }
             }
             else {
                 console.log("Kindly search using either users or an admin as account type");
                 return "Kindly search using either users or an admin as account type";
+            }
+            if(result.length === 0) {
+                console.log("User not found");
+                return "User not found";
+            }
+            else {
+                console.log(result);
+                return result;
             }
     },
     updateUser : function(username, password, newUsername, newEmail, newPassword, access) {

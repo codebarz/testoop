@@ -85,4 +85,5 @@ Admin.prototype = {
     }
 };
 Object.assign(Admin.prototype, Order.prototype);
+Admin.prototype.readOneOrder(2);
 module.exports = Admin;
