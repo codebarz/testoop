@@ -46,15 +46,33 @@ Order.prototype = {
             return result;
         }
     },
-    deleteOneOrder : function(access){
+    deleteSingleOrder: function(id, access) {
+        this.id = id;
+        this.access = access;
+        if(this.access === "admin") {
+            for(let i in dbData.orders) {
+                if(dbData.orders[i].id === this.id) {
+                    dbData.orders.splice(i, 1);
+                    fs.writeFileSync('db.json', JSON.stringify(dbData, null, 2));
+                    console.log(dbData);
+                    return dbData.orders;
+                }
+                else {
+                    console.log("No order was made with this ID");
+                }
+            }
+        }
+    },
+    deleteAllOrders : function(access){
         this.access = access;
         if(access === "admin") {
-            dbData.users = [];
+            dbData.orders = [];
             fs.writeFileSync('db.json', JSON.stringify(dbData, null, 2));
             console.log(dbData);
+            return dbData.orders;
         }
         else {
-            console.log("Only admin is allowed to delete users data");
+            console.log("Only admin is allowed to delete orders");
         }
     }
 };

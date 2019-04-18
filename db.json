@@ -50,17 +50,6 @@
         "beans"
       ],
       "userid": 2
-    },
-    {
-      "timeOfOrder": "9:49",
-      "dateOfOrder": "18/3/2019",
-      "id": 4,
-      "products": [
-        "garri",
-        "rice",
-        "beans"
-      ],
-      "userid": 2
     }
   ]
 }

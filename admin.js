@@ -85,5 +85,5 @@ Admin.prototype = {
     }
 };
 Object.assign(Admin.prototype, Order.prototype);
-Admin.prototype.readOneOrder(2);
+Admin.prototype.deleteSingleOrder(4, "admin");
 module.exports = Admin;
