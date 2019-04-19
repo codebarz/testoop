@@ -22,8 +22,7 @@ Order.createOrder = function(id) {
     //console.log(ret);
     return ret;
 };
-Order.prototype = {
-    constructor: Order,
+Order.action = {
     readAllOrder : function () {
         console.log(dbData.orders);
         return dbData.orders;
@@ -33,7 +32,8 @@ Order.prototype = {
         let result = [];
         for(let i in dbData.orders) {
             if(dbData.orders[i].id === this.orderid) {
-                result.pop().push(dbData.orders[i]);
+                result.pop();
+                result.push(dbData.orders[i]);
             }
         }
         if(result.length === 0) {
@@ -52,25 +52,35 @@ Order.prototype = {
         let date = new Date();
         let updatedOn = `${date.getDay()}/${date.getMonth()}/${date.getFullYear()} at ${date.getHours()}:${date.getMinutes()}`;
 
+        let result = [];
+
         if (this.access === "admin") {
             for (let i in dbData.orders) {
                 if(dbData.orders[i].id === this.id) {
                     dbData.orders[i].products = this.newOrder;
                     dbData.orders[i].updatedOn = updatedOn;
                     fs.writeFileSync('db.json', JSON.stringify(dbData, null, 2));
-                    console.log("The order has been successfully updated");
-                    return "The order has been successfully updated";
+
+                    result.pop();
+                    result.push("The order has been successfully updated");
+                    return result;
+                    //console.log("The order has been successfully updated");
                 }
                 else {
-                    console.log("There is no Id with thi is user");
-                    return "There is no Id with thi is user";
+                    result.pop();
+                    result.push("There is no order with this Id");
+                    //console.log("There is no order with this Id");
                 }
             }
         }
         else {
-            console.log("You are not allowed to update any order");
-            return "You are not allowed to update any order";
+            result.pop();
+            result.push("You are not allowed to update any order");
+            // console.log("You are not allowed to update any order");
+            // return "You are not allowed to update any order";
         }
+        console.log(result[0]);
+        return result[0];
     },
     deleteSingleOrder: function(id, access) {
         this.id = id;
@@ -104,4 +114,5 @@ Order.prototype = {
         }
     }
 };
+Order.action.updateSingleOrder(2, "admin", "french fries");
 module.exports = Order;

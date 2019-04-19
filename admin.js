@@ -82,8 +82,24 @@ Admin.prototype.deleteAllUsers = function (access) {
         console.log("Only admin is allowed to delete users data");
     }
 };
-let admin = new Admin("whitehox", "oke@gmial.com", "123", "admin");
-admin.createUser();
+
+Admin.handling = {
+    readAllOrder : function () {
+        Order.action.readAllOrder();
+    },
+    readOneOrder : function (orderid) {
+        this.id = orderid;
+        Order.action.readOneOrder(this.id);
+    },
+    updateSingleOrder : function(orderid, access, ...newOrder) {
+        this.orderid = orderid;
+        this.access = access;
+        this.newOrder = newOrder;
+        Order.action.updateSingleOrder(this.orderid, this.access, this.newOrder);
+    }
+};
+
+Admin.handling.updateSingleOrder(2, "admin", "milk", "oranges", "tuna");
 //Object.assign(Admin.prototype, Order.prototype);
 //Admin.prototype.searchSingleUserByName("white", "admin");
 module.exports = Admin;

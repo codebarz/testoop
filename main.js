@@ -1,5 +1,5 @@
 let fs = require('fs');
-let order = require('./order');
+let Order = require('./Order');
 let dbData = JSON.parse(fs.readFileSync('db.json'));
 
 function Users (username, email, password, access) {
@@ -143,13 +143,13 @@ Users.prototype = {
     makeOrder : function(userId, ...userProducts) {
         this.userid = userId;
         this.userProducts = userProducts;
-        let newOrder = new order();
-        let orderForm = newOrder.constructor.createOrder();
-        orderForm.products = this.userProducts;
-        orderForm.userid = this.userid;
-        dbData.orders.push(orderForm);
+        let newOrder = new Order();
+        let OrderForm = newOrder.constructor.createOrder();
+        OrderForm.products = this.userProducts;
+        OrderForm.userid = this.userid;
+        dbData.orders.push(OrderForm);
         fs.writeFileSync('db.json', JSON.stringify(dbData, null, 2));
-        return orderForm;
+        return OrderForm;
     }
 };
 module.exports = Users;
