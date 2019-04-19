@@ -33,8 +33,7 @@ Order.prototype = {
         let result = [];
         for(let i in dbData.orders) {
             if(dbData.orders[i].id === this.orderid) {
-                result.pop();
-                result.push(dbData.orders[i]);
+                result.pop().push(dbData.orders[i]);
             }
         }
         if(result.length === 0) {
@@ -60,14 +59,17 @@ Order.prototype = {
                     dbData.orders[i].updatedOn = updatedOn;
                     fs.writeFileSync('db.json', JSON.stringify(dbData, null, 2));
                     console.log("The order has been successfully updated");
+                    return "The order has been successfully updated";
                 }
                 else {
                     console.log("There is no Id with thi is user");
+                    return "There is no Id with thi is user";
                 }
             }
         }
         else {
             console.log("You are not allowed to update any order");
+            return "You are not allowed to update any order";
         }
     },
     deleteSingleOrder: function(id, access) {
@@ -83,6 +85,7 @@ Order.prototype = {
                 }
                 else {
                     console.log("No order was made with this ID");
+                    return "No order was made with this ID";
                 }
             }
         }
@@ -97,8 +100,8 @@ Order.prototype = {
         }
         else {
             console.log("Only admin is allowed to delete orders");
+            return "Only admin is allowed to delete orders";
         }
     }
 };
-Order.prototype.updateSingleOrder(1, "admin", "rice", "beans");
 module.exports = Order;

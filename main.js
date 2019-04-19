@@ -101,6 +101,7 @@ Users.prototype = {
             }
     },
     updateUser : function(username, password, newUsername, newEmail, newPassword, access) {
+        let response = "";
         this.username = username;
         this.newUsername = newUsername;
         this.password = password;
@@ -115,10 +116,10 @@ Users.prototype = {
                     dbData.admin[i].password = this.newPassword;
                     dbData.admin[i].email = this.newEmail;
                     fs.writeFileSync('db.json', JSON.stringify(dbData, null, 2));
-                    console.log("Your account has been successfully updated");
+                    response = "Your account has been successfully updated";
                 }
                 else {
-                    console.log("Incorrect username or password");
+                    response = "Incorrect username or password";
                 }
             }
         }
@@ -129,13 +130,15 @@ Users.prototype = {
                     dbData.users[i].password = this.newPassword;
                     dbData.users[i].email = this.newEmail;
                     fs.writeFileSync('db.json', JSON.stringify(dbData, null, 2));
-                    console.log("Your account has been successfully updated");
+                    response = "Your account has been successfully updated";
                 }
                 else {
-                    console.log("Incorrect username or password");
+                    response = "Incorrect username or password";
                 }
             }
         }
+        console.log(response);
+        return response;
     },
     makeOrder : function(userId, ...userProducts) {
         this.userid = userId;

@@ -2,6 +2,7 @@ let fs = require('fs');
 const users = require("../main");
 const admin = require("../admin");
 const order = require("../order");
+let mocks = require("../__mocks__/functions");
 let dbData = JSON.parse(fs.readFileSync('db.json'));
 function checkId() {
     let currentid = 0;
@@ -21,12 +22,17 @@ describe("To test if all normal user activities", () => {
         expect(createdUser).toEqual([ '{"username":"whitehox","email":"white@gmail.com","password":"123","access":"admin"}' ]);
     });
     test("should check if a  user can be checked with his ID", () => {
-        let result = [];
+        let result;
         let search = users.prototype.searchSingleUserById(1, "admin");
-        result.push(search);
-        expect(result).toEqual([{ id: 1, username: 'white', email: 'whitehox@gmail.com', password: '1234', access: 'admin' }]);
+        result = search;
+        console.log(result);
+        expect(result).toEqual([dbData.admin[0]]);
         expect(result).toBeDefined();
-    })
+    });
+    test("should check if a user entered right username or password", () => {
+       let res = users.prototype.updateUser("oketeg", "11861538da", "whitehox", "oketegah@gmail.com", "11861538da", "users");
+        expect(res).toBe("Incorrect username or password");
+    });
 });
 
 describe("To test all administrator priviledges", () => {
