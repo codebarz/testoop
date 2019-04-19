@@ -33,69 +33,25 @@
   ],
   "orders": [
     {
-      "timeOfOrder": "9:7",
-      "dateOfOrder": "18/3/2019",
+      "timeOfOrder": "18:21",
+      "dateOfOrder": "19/3/2019",
       "id": 1,
       "products": [
-        "rice",
-        "beans"
+        "garri",
+        "fish",
+        "sugar"
       ],
-      "userid": 2,
-      "updatedOn": "4/3/2019 at 13:3"
+      "userid": 1
     },
     {
-      "timeOfOrder": "9:38",
-      "dateOfOrder": "18/3/2019",
+      "timeOfOrder": "18:22",
+      "dateOfOrder": "19/3/2019",
       "id": 2,
       "products": [
-        "french fries"
+        "milk",
+        "coffee"
       ],
-      "userid": 2,
-      "updatedOn": "5/3/2019 at 14:56"
-    },
-    {
-      "timeOfOrder": "9:47",
-      "dateOfOrder": "18/3/2019",
-      "id": 3,
-      "products": [
-        "pomo",
-        "asun"
-      ],
-      "userid": 2,
-      "updatedOn": "4/3/2019 at 12:41"
-    },
-    {
-      "timeOfOrder": "14:7",
-      "dateOfOrder": "18/3/2019",
-      "id": 4,
-      "products": [
-        "garri",
-        "rice",
-        "beans"
-      ],
-      "userid": 2
-    },
-    {
-      "timeOfOrder": "14:13",
-      "dateOfOrder": "18/3/2019",
-      "id": 5,
-      "products": [
-        "garri",
-        "rice",
-        "beans"
-      ],
-      "userid": 2
-    },
-    {
-      "timeOfOrder": "14:15",
-      "dateOfOrder": "18/3/2019",
-      "id": 6,
-      "products": [
-        "garri",
-        "rice",
-        "beans"
-      ],
-      "userid": 2
+      "userid": 1
     }
   ]
 }

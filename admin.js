@@ -96,10 +96,15 @@ Admin.handling = {
         this.access = access;
         this.newOrder = newOrder;
         Order.action.updateSingleOrder(this.orderid, this.access, this.newOrder);
+    },
+    deleteSingleOrder : function(id, access) {
+        this.id = id;
+        this.access = access;
+        return Order.action.deleteSingleOrder(this.id, this.access);
+    },
+    deleteAllOrders : function (access) {
+        this.access = access;
+        return Order.action.deleteAllOrders(this.access);
     }
 };
-
-Admin.handling.updateSingleOrder(2, "admin", "milk", "oranges", "tuna");
-//Object.assign(Admin.prototype, Order.prototype);
-//Admin.prototype.searchSingleUserByName("white", "admin");
 module.exports = Admin;

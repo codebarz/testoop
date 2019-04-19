@@ -143,13 +143,21 @@ Users.prototype = {
     makeOrder : function(userId, ...userProducts) {
         this.userid = userId;
         this.userProducts = userProducts;
-        let newOrder = new Order();
-        let OrderForm = newOrder.constructor.createOrder();
-        OrderForm.products = this.userProducts;
-        OrderForm.userid = this.userid;
-        dbData.orders.push(OrderForm);
-        fs.writeFileSync('db.json', JSON.stringify(dbData, null, 2));
-        return OrderForm;
+
+        dbData.users.forEach(value => {
+            if (value.id !== this.userid) { console.log("There is no user registered with this ID"); }
+            else {
+                let newOrder = new Order();
+                let OrderForm = newOrder.constructor.createOrder();
+                OrderForm.products = this.userProducts;
+                OrderForm.userid = this.userid;
+                dbData.orders.push(OrderForm);
+                fs.writeFileSync('db.json', JSON.stringify(dbData, null, 2));
+                console.log("Your order has been successfully made!.");
+                return OrderForm;
+            }
+        });
     }
 };
+Users.prototype.makeOrder(2, "milk", "coffee");
 module.exports = Users;

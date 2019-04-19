@@ -19,7 +19,7 @@ Order.createOrder = function(id) {
         dateOfOrder: this.orderDate,
         id: this.id
     };
-    //console.log(ret);
+    console.log(ret);
     return ret;
 };
 Order.action = {
@@ -67,7 +67,6 @@ Order.action = {
                     //console.log("The order has been successfully updated");
                 }
                 else {
-                    result.pop();
                     result.push("There is no order with this Id");
                     //console.log("There is no order with this Id");
                 }
@@ -85,17 +84,23 @@ Order.action = {
     deleteSingleOrder: function(id, access) {
         this.id = id;
         this.access = access;
+
+        let resultsuccess = [];
+        let resultfail = [];
+
         if(this.access === "admin") {
             for(let i in dbData.orders) {
                 if(dbData.orders[i].id === this.id) {
                     dbData.orders.splice(i, 1);
                     fs.writeFileSync('db.json', JSON.stringify(dbData, null, 2));
-                    console.log(dbData);
-                    return dbData.orders;
+                    resultsuccess.push("The order has been deleted");
+                    console.log(resultsuccess[0]);
+                    return resultsuccess[0];
                 }
                 else {
-                    console.log("No order was made with this ID");
-                    return "No order was made with this ID";
+                    resultfail.push("No order was made with this ID");
+                    console.log(resultfail[0]);
+                    // return "No order was made with this ID";
                 }
             }
         }
@@ -114,5 +119,4 @@ Order.action = {
         }
     }
 };
-Order.action.updateSingleOrder(2, "admin", "french fries");
 module.exports = Order;
