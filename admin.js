@@ -11,37 +11,51 @@ Admin.prototype = Object.create(Users.prototype);
 Admin.constructor = Admin;
 Admin.prototype.searchAllUsers = function(userType) {
     this.usertype = userType;
+
+    let response = "";
+
     if(this.usertype === "admin") {
+        response = "Here are your search results for admin";
         console.log(dbData.admin);
     }
-    else if(this.usertype === "users") {
+    else if(this.usertype === "user") {
+        response = "Here are your search results for users";
         console.log(dbData.users);
     }
     else {
-        console.log("Kindly use either admin or users as the account type");
+        response = "Kindly use either admin or user as the account type";
     }
+    console.log(response);
+    return response;
 };
 Admin.prototype.searchSingleUserByName = function(username, accountType) {
     this.username = username;
     this.searchType = accountType;
+
+    let response = "";
+
     if (this.searchType === "admin") {
         for (let i in dbData.admin) {
             if (dbData.admin[i].username === this.username) {
+                response = "Here is the result of the admin you searched for";
                 console.log(dbData.admin[i]);
             } else {
-                console.log("There is no user registered with this username");
+                response = "There is no user registered with this username";
             }
         }
     }
-    else if (this.searchType === "users") {
+    else if (this.searchType === "user") {
         for (let i in dbData.users) {
             if (dbData.users[i].username === this.username) {
+                response = "Here is the result of the user you searched for";
                 console.log(dbData.users[i]);
             } else {
-                console.log("There is no user registered with this username");
+                response = "There is no user registered with this username";
             }
         }
     }
+    console.log(response);
+    return response;
 };
 Admin.prototype.deleteSingleUser = function(id, accountType) {
     this.id = id;
@@ -85,17 +99,17 @@ Admin.prototype.deleteAllUsers = function (access) {
 
 Admin.handling = {
     readAllOrder : function () {
-        Order.action.readAllOrder();
+        return Order.action.readAllOrder();
     },
     readOneOrder : function (orderid) {
         this.id = orderid;
-        Order.action.readOneOrder(this.id);
+        return Order.action.readOneOrder(this.id);
     },
     updateSingleOrder : function(orderid, access, ...newOrder) {
         this.orderid = orderid;
         this.access = access;
         this.newOrder = newOrder;
-        Order.action.updateSingleOrder(this.orderid, this.access, this.newOrder);
+        return Order.action.updateSingleOrder(this.orderid, this.access, this.newOrder);
     },
     deleteSingleOrder : function(id, access) {
         this.id = id;
@@ -107,4 +121,5 @@ Admin.handling = {
         return Order.action.deleteAllOrders(this.access);
     }
 };
+Admin.handling.readAllOrder();
 module.exports = Admin;

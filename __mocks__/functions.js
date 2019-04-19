@@ -38,4 +38,9 @@ let mockDb = {
         }
     ]
 };
-module.exports = mockDb;
+let admin = {
+    readAllOrder : () => {
+        return mockDb.orders;
+    }
+};
+module.exports = { mockDb, admin};

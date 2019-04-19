@@ -4,7 +4,42 @@
       "id": 1,
       "username": "whitehox",
       "email": "oketegah@gmail.com",
+      "password": "123",
+      "access": "user"
+    },
+    {
+      "id": 2,
+      "username": "mikel",
+      "email": "oketegah@gmail.com",
       "password": "11861538da",
+      "access": "user"
+    },
+    {
+      "id": 3,
+      "username": "whitehox",
+      "email": "white@gmail.com",
+      "password": "123",
+      "access": "user"
+    },
+    {
+      "id": 4,
+      "username": "whitehox",
+      "email": "white@gmail.com",
+      "password": "123",
+      "access": "user"
+    },
+    {
+      "id": 5,
+      "username": "whitehox",
+      "email": "white@gmail.com",
+      "password": "123",
+      "access": "user"
+    },
+    {
+      "id": 6,
+      "username": "whitehox",
+      "email": "white@gmail.com",
+      "password": "123",
       "access": "user"
     }
   ],
@@ -26,7 +61,35 @@
     {
       "id": 4,
       "username": "whitehox",
-      "email": "oke@gmial.com",
+      "email": "white@gmail.com",
+      "password": "123",
+      "access": "admin"
+    },
+    {
+      "id": 5,
+      "username": "whitehox",
+      "email": "white@gmail.com",
+      "password": "123",
+      "access": "admin"
+    },
+    {
+      "id": 6,
+      "username": "whitehox",
+      "email": "white@gmail.com",
+      "password": "123",
+      "access": "admin"
+    },
+    {
+      "id": 7,
+      "username": "whitehox",
+      "email": "white@gmail.com",
+      "password": "123",
+      "access": "admin"
+    },
+    {
+      "id": 8,
+      "username": "whitehox",
+      "email": "white@gmail.com",
       "password": "123",
       "access": "admin"
     }
@@ -52,6 +115,46 @@
         "coffee"
       ],
       "userid": 1
+    },
+    {
+      "timeOfOrder": "19:44",
+      "dateOfOrder": "19/3/2019",
+      "id": 3,
+      "products": [
+        "milk",
+        "coffee"
+      ],
+      "userid": 2
+    },
+    {
+      "timeOfOrder": "19:44",
+      "dateOfOrder": "19/3/2019",
+      "id": 4,
+      "products": [
+        "milk",
+        "coffee"
+      ],
+      "userid": 2
+    },
+    {
+      "timeOfOrder": "19:48",
+      "dateOfOrder": "19/3/2019",
+      "id": 5,
+      "products": [
+        "milk",
+        "coffee"
+      ],
+      "userid": 2
+    },
+    {
+      "timeOfOrder": "19:50",
+      "dateOfOrder": "19/3/2019",
+      "id": 6,
+      "products": [
+        "milk",
+        "coffee"
+      ],
+      "userid": 2
     }
   ]
 }
