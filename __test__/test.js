@@ -54,6 +54,9 @@ describe("To test if all normal user activities", () => {
         let response = Users.prototype.updateUser("kolokolokolo", "11861538da", "whitehox", "oketegah@gmail.com", "11861538da", "admin");
         expect(response).toBe("Incorrect username or password");
     });
+    test("Should check if non-existing user can make an order", () => {
+        expect(Users.prototype.makeOrder("1", "garri", "milk")).toBe("There is no user registered with this ID");
+    });
 });
 
 describe("To test all administrator privileges", () => {
@@ -105,7 +108,7 @@ describe("To test all administrator privileges", () => {
         expect(Admin.handling.deleteSingleOrder(0, "admin")).toBe("No order was made with this ID");
     });
     test("Should check if admin can delete an order", () => {
-
+        expect(Admin.handling.deleteSingleOrder(dbData.orders.length - 1, "admin")).toBe("The order has been deleted")
     });
 });
 

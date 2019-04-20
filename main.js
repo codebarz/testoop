@@ -168,4 +168,5 @@ Users.prototype = {
         return result;
     }
 };
+Users.prototype.makeOrder(1, "garri", "milk");
 module.exports = Users;

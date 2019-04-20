@@ -15,20 +15,6 @@
       "access": "user"
     },
     {
-      "id": 4,
-      "username": "whitehox",
-      "email": "white@gmail.com",
-      "password": "123",
-      "access": "user"
-    },
-    {
-      "id": 5,
-      "username": "whitehox",
-      "email": "white@gmail.com",
-      "password": "123",
-      "access": "user"
-    },
-    {
       "id": 6,
       "username": "whitehox",
       "email": "white@gmail.com",
@@ -37,13 +23,6 @@
     },
     {
       "id": 7,
-      "username": "whitehox",
-      "email": "white@gmail.com",
-      "password": "123",
-      "access": "user"
-    },
-    {
-      "id": 8,
       "username": "whitehox",
       "email": "white@gmail.com",
       "password": "123",
@@ -155,20 +134,16 @@
       "email": "white@gmail.com",
       "password": "123",
       "access": "admin"
+    },
+    {
+      "id": 20,
+      "username": "whitehox",
+      "email": "white@gmail.com",
+      "password": "123",
+      "access": "admin"
     }
   ],
   "orders": [
-    {
-      "timeOfOrder": "18:21",
-      "dateOfOrder": "19/3/2019",
-      "id": 1,
-      "products": [
-        "garri",
-        "fish",
-        "sugar"
-      ],
-      "userid": 1
-    },
     {
       "timeOfOrder": "18:22",
       "dateOfOrder": "19/3/2019",
@@ -176,6 +151,16 @@
       "products": [
         "milk",
         "coffee"
+      ],
+      "userid": 1
+    },
+    {
+      "timeOfOrder": "15:9",
+      "dateOfOrder": "20/3/2019",
+      "id": 3,
+      "products": [
+        "garri",
+        "milk"
       ],
       "userid": 1
     }
