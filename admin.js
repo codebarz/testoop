@@ -76,7 +76,7 @@ Admin.prototype.deleteSingleUser = function(id, accountType) {
             }
         }
     }
-    if(this.accountType === "user") {
+    else if(this.accountType === "user") {
         for(let i in dbData.users) {
             if(dbData.users[i].id === this.id) {
                 dbData.users.splice(i, 1);
@@ -88,6 +88,9 @@ Admin.prototype.deleteSingleUser = function(id, accountType) {
                 response = "There is no user registered with this ID";
             }
         }
+    }
+    else {
+        response = "Kindly use a valid account type";
     }
     console.log(response);
     return response;

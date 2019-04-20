@@ -40,6 +40,28 @@ let mockDb = {
     ]
 };
 Admin.prototype.deleteSingleUser = function(id, accountType) {
+    this.id = id;
+    this.accountType = accountType;
 
+    let response = "";
+
+    if (this.accountType === "admin") {
+        if(mockDb.admin[0].id === this.id) {
+            response = "Account successfully deleted";
+        }
+        else {
+            response = "There is no user registered with this ID";
+        }
+    }
+    else if (this.accountType === "user") {
+        if(mockDb.users[0].id === this.id) {
+            response = "Account successfully deleted";
+        }
+        else {
+            response = "There is no user registered with this ID";
+        }
+    }
+    console.log("Its using the mock");
+    return response;
 };
 module.exports = Admin;

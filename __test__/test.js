@@ -1,6 +1,7 @@
 let fs = require('fs');
 const Users = require("../main");
 const Admin = require("../admin");
+jest.setMock("../admin", require("../__mocks__/admin"));
 const order = require("../order");
 let mocks = require("../__mocks__/admin");
 let dbData = JSON.parse(fs.readFileSync('db.json'));
@@ -85,11 +86,13 @@ describe("To test all administrator privileges", () => {
        expect(response).toBe("There is no user registered with this username");
     });
     test("Should check if admin can delete with a wrong id", () => {
+        expect.assertions(1);
         let response = Admin.prototype.deleteSingleUser(0, "user");
         expect(response).toBe("There is no user registered with this ID");
     });
     test("Should check if admin can delete a user", () => {
-        let response = Admin.prototype.deleteSingleUser(dbData.users[dbData.users.length - 1].id, "user");
+        expect.assertions(1);
+        let response = Admin.prototype.deleteSingleUser(1, "user");
         expect(response).toBe("Account successfully deleted");
     });
     test("If a user or wrong access tries to delete all users", () => {
