@@ -168,5 +168,6 @@ Users.prototype = {
         return result;
     }
 };
-Users.prototype.makeOrder(1, "garri", "milk");
+let newUser = new Users("ainah", "oluwa@gmail.com", "54321", "user");
+newUser.createUser();
 module.exports = Users;

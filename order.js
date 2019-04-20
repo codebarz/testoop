@@ -1,6 +1,5 @@
 let fs = require('fs');
 let dbData = JSON.parse(fs.readFileSync('db.json'));
-let ret = [];
 function Order() {
 }
 Order.createOrder = function(id) {

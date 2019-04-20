@@ -94,14 +94,20 @@ Admin.prototype.deleteSingleUser = function(id, accountType) {
 };
 Admin.prototype.deleteAllUsers = function (access) {
     this.access = access;
+
+    let response = "";
+
     if(access === "admin") {
         dbData.users = [];
         fs.writeFileSync('db.json', JSON.stringify(dbData, null, 2));
         console.log(dbData);
+        response = "All users have been deleted";
     }
     else {
-        console.log("Only admin is allowed to delete users data");
+        response = "Only admin is allowed to delete users data";
     }
+    console.log(response);
+    return response;
 };
 
 Admin.handling = {

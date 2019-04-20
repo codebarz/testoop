@@ -1,3 +1,4 @@
+let Admin = require("../admin");
 let mockDb = {
     "users": [
         {
@@ -38,12 +39,7 @@ let mockDb = {
         }
     ]
 };
-let admin = {
-    prototype : {
-    readAllOrder : () => {
-        return mockDb.orders;
-    },
-        deleteSingleUser : jest.fn(() => "Hello")
-    }
+Admin.prototype.deleteSingleUser = function(id, accountType) {
+
 };
-module.exports = { mockDb, admin};
+module.exports = Admin;

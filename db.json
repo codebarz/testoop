@@ -2,30 +2,16 @@
   "users": [
     {
       "id": 1,
-      "username": "whitehox",
-      "email": "oketegah@gmail.com",
-      "password": "123",
+      "username": "ainah",
+      "email": "oluwa@gmail.com",
+      "password": "54321",
       "access": "user"
     },
     {
       "id": 2,
-      "username": "mikel",
-      "email": "oketegah@gmail.com",
-      "password": "11861538da",
-      "access": "user"
-    },
-    {
-      "id": 6,
-      "username": "whitehox",
-      "email": "white@gmail.com",
-      "password": "123",
-      "access": "user"
-    },
-    {
-      "id": 7,
-      "username": "whitehox",
-      "email": "white@gmail.com",
-      "password": "123",
+      "username": "ainah",
+      "email": "oluwa@gmail.com",
+      "password": "54321",
       "access": "user"
     }
   ],
@@ -141,28 +127,14 @@
       "email": "white@gmail.com",
       "password": "123",
       "access": "admin"
-    }
-  ],
-  "orders": [
-    {
-      "timeOfOrder": "18:22",
-      "dateOfOrder": "19/3/2019",
-      "id": 2,
-      "products": [
-        "milk",
-        "coffee"
-      ],
-      "userid": 1
     },
     {
-      "timeOfOrder": "15:9",
-      "dateOfOrder": "20/3/2019",
-      "id": 3,
-      "products": [
-        "garri",
-        "milk"
-      ],
-      "userid": 1
+      "id": 21,
+      "username": "whitehox",
+      "email": "white@gmail.com",
+      "password": "123",
+      "access": "admin"
     }
-  ]
+  ],
+  "orders": []
 }
