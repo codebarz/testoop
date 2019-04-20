@@ -168,5 +168,4 @@ Users.prototype = {
         return result;
     }
 };
-Users.prototype.updateUser("michael", "11861538da", "mikel", "oketegah@gmail.com", "11861538da", "user");
 module.exports = Users;

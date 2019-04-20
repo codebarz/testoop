@@ -15,13 +15,6 @@
       "access": "user"
     },
     {
-      "id": 3,
-      "username": "whitehox",
-      "email": "white@gmail.com",
-      "password": "123",
-      "access": "user"
-    },
-    {
       "id": 4,
       "username": "whitehox",
       "email": "white@gmail.com",
@@ -41,16 +34,23 @@
       "email": "white@gmail.com",
       "password": "123",
       "access": "user"
+    },
+    {
+      "id": 7,
+      "username": "whitehox",
+      "email": "white@gmail.com",
+      "password": "123",
+      "access": "user"
+    },
+    {
+      "id": 8,
+      "username": "whitehox",
+      "email": "white@gmail.com",
+      "password": "123",
+      "access": "user"
     }
   ],
   "admin": [
-    {
-      "id": 1,
-      "username": "white",
-      "email": "whitehox@gmail.com",
-      "password": "1234",
-      "access": "admin"
-    },
     {
       "id": 3,
       "username": "uchenna",
@@ -92,6 +92,69 @@
       "email": "white@gmail.com",
       "password": "123",
       "access": "admin"
+    },
+    {
+      "id": 11,
+      "username": "whitehox",
+      "email": "white@gmail.com",
+      "password": "123",
+      "access": "admin"
+    },
+    {
+      "id": 12,
+      "username": "whitehox",
+      "email": "white@gmail.com",
+      "password": "123",
+      "access": "admin"
+    },
+    {
+      "id": 13,
+      "username": "whitehox",
+      "email": "white@gmail.com",
+      "password": "123",
+      "access": "admin"
+    },
+    {
+      "id": 14,
+      "username": "whitehox",
+      "email": "white@gmail.com",
+      "password": "123",
+      "access": "admin"
+    },
+    {
+      "id": 15,
+      "username": "whitehox",
+      "email": "white@gmail.com",
+      "password": "123",
+      "access": "admin"
+    },
+    {
+      "id": 16,
+      "username": "whitehox",
+      "email": "white@gmail.com",
+      "password": "123",
+      "access": "admin"
+    },
+    {
+      "id": 17,
+      "username": "whitehox",
+      "email": "white@gmail.com",
+      "password": "123",
+      "access": "admin"
+    },
+    {
+      "id": 18,
+      "username": "whitehox",
+      "email": "white@gmail.com",
+      "password": "123",
+      "access": "admin"
+    },
+    {
+      "id": 19,
+      "username": "whitehox",
+      "email": "white@gmail.com",
+      "password": "123",
+      "access": "admin"
     }
   ],
   "orders": [
@@ -115,46 +178,6 @@
         "coffee"
       ],
       "userid": 1
-    },
-    {
-      "timeOfOrder": "19:44",
-      "dateOfOrder": "19/3/2019",
-      "id": 3,
-      "products": [
-        "milk",
-        "coffee"
-      ],
-      "userid": 2
-    },
-    {
-      "timeOfOrder": "19:44",
-      "dateOfOrder": "19/3/2019",
-      "id": 4,
-      "products": [
-        "milk",
-        "coffee"
-      ],
-      "userid": 2
-    },
-    {
-      "timeOfOrder": "19:48",
-      "dateOfOrder": "19/3/2019",
-      "id": 5,
-      "products": [
-        "milk",
-        "coffee"
-      ],
-      "userid": 2
-    },
-    {
-      "timeOfOrder": "19:50",
-      "dateOfOrder": "19/3/2019",
-      "id": 6,
-      "products": [
-        "milk",
-        "coffee"
-      ],
-      "userid": 2
     }
   ]
 }

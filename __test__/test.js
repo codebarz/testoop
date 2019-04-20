@@ -2,7 +2,7 @@ let fs = require('fs');
 const Users = require("../main");
 const Admin = require("../admin");
 const order = require("../order");
-let mocks = require("../__mocks__/functions");
+let mocks = require("../__mocks__/admin");
 let dbData = JSON.parse(fs.readFileSync('db.json'));
 function checkId() {
     let currentid = 0;
@@ -15,6 +15,10 @@ function checkId() {
     return currentid;
 }
 describe("To test if all normal user activities", () => {
+    test("Should check instance of user", () => {
+        let newUser = new Users("w", "w@gmail.com", "w", "user");
+        expect(newUser).toEqual({username: 'w', email: 'w@gmail.com', password: 'w', access: 'user' });
+    });
     test("should check if an admin account can be successfully created", () => {
         let newUser = new Users("whitehox", "white@gmail.com", "123", "admin");
         let success = newUser.createUser();
@@ -32,7 +36,7 @@ describe("To test if all normal user activities", () => {
     });
     test("should check if a  user can be checked with his ID", () => {
         let result;
-        let search = Users.prototype.searchSingleUserById(1, "admin");
+        let search = Users.prototype.searchSingleUserById(3, "admin");
         result = search;
         console.log(result);
         expect(result).toEqual([dbData.admin[0]]);
@@ -53,6 +57,10 @@ describe("To test if all normal user activities", () => {
 });
 
 describe("To test all administrator privileges", () => {
+    test("Should check for instance of admin", () => {
+        let newUser = new Admin("h", "h@gmail.com", "access", "admin");
+        expect(newUser).toEqual({username: 'h', email: 'h@gmail.com', password: 'access', access: 'admin' });
+    });
     test("Should check if admin can search all users", () => {
        let response = Admin.prototype.searchAllUsers("user");
        expect(response).toBe("Here are your search results for users");
@@ -65,9 +73,39 @@ describe("To test all administrator privileges", () => {
         let response = Admin.prototype.searchAllUsers("foreign");
         expect(response).toBe("Kindly use either admin or user as the account type");
     });
-    test("Should check if admin can search f with wrong details", () => {
+    test("Should check if admin can search a user by name", () => {
+       let response = Admin.prototype.searchSingleUserByName("whitehox", "user");
+       expect(response).toBe("Here is the result of the user you searched for");
+    });
+    test("Should check if admin can search with wrong details", () => {
        let response = Admin.prototype.searchSingleUserByName("witehox", "user");
        expect(response).toBe("There is no user registered with this username");
+    });
+    test("Should check if admin can delete with a wrong id", () => {
+        let response = Admin.prototype.deleteSingleUser(0, "user");
+        expect(response).toBe("There is no user registered with this ID");
+    });
+    test("Should check if admin can delete a user", () => {
+        let response = Admin.prototype.deleteSingleUser(8, "user");
+        expect(response).toBe("Account successfully deleted");
+    });
+    test("Should check if admin can read all orders", () => {
+        expect(Admin.handling.readAllOrder()).toEqual(dbData.orders);
+    });
+    test("Should check if admin search non-existing order", () => {
+        expect(Admin.handling.readOneOrder(0)).toBe("There is no order with this Id");
+    });
+    test("Should check if admin can read one order", () => {
+        expect(Admin.handling.readOneOrder(1)).toEqual([dbData.orders[0]]);
+    });
+    test("Should check if admin can delete with wrong access level", () => {
+        expect(Admin.handling.deleteAllOrders("foreign")).toBe("Only admin is allowed to delete orders");
+    });
+    test("Should check if admin can delete non-existing order", () => {
+        expect(Admin.handling.deleteSingleOrder(0, "admin")).toBe("No order was made with this ID");
+    });
+    test("Should check if admin can delete an order", () => {
+
     });
 });
 
@@ -77,7 +115,7 @@ describe("To test all order functionality", () => {
        expect(toBeTested).toBe("There is no user registered with this ID");
    });
    test("If admin can read all Users", () => {
-      let result = mocks.admin.readAllOrder();
+      let result = mocks.admin.prototype.readAllOrder();
       expect(result).toEqual(mocks.mockDb.orders);
    });
    test("If admin can read one user", () => {

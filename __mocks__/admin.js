@@ -39,8 +39,11 @@ let mockDb = {
     ]
 };
 let admin = {
+    prototype : {
     readAllOrder : () => {
         return mockDb.orders;
+    },
+        deleteSingleUser : jest.fn(() => "Hello")
     }
 };
 module.exports = { mockDb, admin};

@@ -85,25 +85,25 @@ Order.action = {
         this.id = id;
         this.access = access;
 
-        let resultsuccess = [];
-        let resultfail = [];
+        let result = "";
 
         if(this.access === "admin") {
             for(let i in dbData.orders) {
                 if(dbData.orders[i].id === this.id) {
                     dbData.orders.splice(i, 1);
                     fs.writeFileSync('db.json', JSON.stringify(dbData, null, 2));
-                    resultsuccess.push("The order has been deleted");
-                    console.log(resultsuccess[0]);
-                    return resultsuccess[0];
+                    result = "The order has been deleted";
                 }
                 else {
-                    resultfail.push("No order was made with this ID");
-                    console.log(resultfail[0]);
+                    result = "No order was made with this ID";
                     // return "No order was made with this ID";
                 }
             }
         }
+
+        console.log(result);
+        return result;
+
     },
     deleteAllOrders : function(access){
         this.access = access;

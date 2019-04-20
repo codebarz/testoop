@@ -60,30 +60,37 @@ Admin.prototype.searchSingleUserByName = function(username, accountType) {
 Admin.prototype.deleteSingleUser = function(id, accountType) {
     this.id = id;
     this.accountType = accountType;
+
+    let response = "";
+
     if(this.accountType === "admin") {
         for(let i in dbData.admin) {
             if(dbData.admin[i].id === this.id) {
                 dbData.admin.splice(i, 1);
                 fs.writeFileSync('db.json', JSON.stringify(dbData, null, 2));
-                console.log(dbData);
+                console.log(dbData.admin);
+                response = "Account successfully deleted";
             }
             else {
-                console.log("There is no user registered with this ID");
+                response = "There is no user registered with this ID";
             }
         }
     }
-    if(this.accountType === "users") {
-        for(let i in dbData.admin) {
+    if(this.accountType === "user") {
+        for(let i in dbData.users) {
             if(dbData.users[i].id === this.id) {
                 dbData.users.splice(i, 1);
                 fs.writeFileSync('db.json', JSON.stringify(dbData, null, 2));
-                console.log(dbData);
+                console.log(dbData.users);
+                response = "Account successfully deleted";
             }
             else {
-                console.log("There is no user registered with this ID");
+                response = "There is no user registered with this ID";
             }
         }
     }
+    console.log(response);
+    return response;
 };
 Admin.prototype.deleteAllUsers = function (access) {
     this.access = access;
@@ -121,5 +128,5 @@ Admin.handling = {
         return Order.action.deleteAllOrders(this.access);
     }
 };
-Admin.handling.readAllOrder();
+Admin.handling.deleteSingleOrder(3, "admin");
 module.exports = Admin;
