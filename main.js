@@ -74,6 +74,7 @@ Users.prototype = {
         this.id = id;
         this.searchType = accountType;
         let result = [];
+        let response = "";
             if (this.searchType === "admin") {
                 for(let i in dbData.admin) {
                     if(dbData.admin[i].id === this.id) {
@@ -82,7 +83,7 @@ Users.prototype = {
                     }
                 }
             }
-            else if(this.searchType === "users") {
+            else if(this.searchType === "user") {
                 for (let i in dbData.users) {
                     if(dbData.users[i].id === this.id) {
                         result.pop();
@@ -96,12 +97,14 @@ Users.prototype = {
             }
             if(result.length === 0) {
                 console.log("User not found");
-                return "User not found";
+                response =  "User not found";
             }
             else {
                 console.log(result);
-                return result;
+                response = "Haha!.. Here you go.";
             }
+            console.log(response);
+            return response;
     },
     updateUser : function(username, password, newUsername, newEmail, newPassword, access) {
         this.username = username;
@@ -121,6 +124,7 @@ Users.prototype = {
                     dbData.admin[i].email = this.newEmail;
                     fs.writeFileSync('db.json', JSON.stringify(dbData, null, 2));
                     response = "Your administrator account has been successfully updated";
+                    break;
                 }
                 else {
                     response = "Incorrect username or password";
@@ -135,6 +139,7 @@ Users.prototype = {
                     dbData.users[i].email = this.newEmail;
                     fs.writeFileSync('db.json', JSON.stringify(dbData, null, 2));
                     response = "Your user account has been successfully updated";
+                    break;
                 }
                 else {
                     response = "Incorrect username or password";

@@ -35,18 +35,10 @@ describe("To test if all normal user activities", () => {
         let error = newUser.createUser();
         expect(error).toBe("A user can not be created with this access level. Kindly use either admin or user");
     });
-    test("should check if a  user can be checked with his ID", () => {
-        let result;
-        let search = Users.prototype.searchSingleUserById(3, "admin");
-        result = search;
-        console.log(result);
-        expect(result).toEqual([dbData.admin[0]]);
-        expect(result).toBeDefined();
+    test("Should check if a user account was successfully updated", () => {
+        let response = Users.prototype.updateUser("ainah", "54321", "ainah", "oluwa@gmail.com", "54321", "user");
+        expect(response).toBe("Your user account has been successfully updated");
     });
-    // test("Should check if a user account was successfully updated", () => {
-    //     let response = Users.prototype.updateUser("michael", "11861538da", "michael", "oketegah@gmail.com", "11861538da", "user");
-    //     expect(response).toBe("Your user account has been successfully updated");
-    // });
     test("should check if a user entered right username or password", () => {
         let response = Users.prototype.updateUser("kolokolokolo", "11861538da", "whitehox", "oketegah@gmail.com", "11861538da", "user");
         expect(response).toBe("Incorrect username or password");
@@ -64,6 +56,18 @@ describe("To test all administrator privileges", () => {
     test("Should check for instance of admin", () => {
         let newUser = new Admin("h", "h@gmail.com", "access", "admin");
         expect(newUser).toEqual({username: 'h', email: 'h@gmail.com', password: 'access', access: 'admin' });
+    });
+    test("Should check admin can search by Id", () => {
+        let response = Admin.prototype.searchSingleUserById(0, "admin");
+        expect(response).toBe("User not found");
+    });
+    test("Should check admin can search by Id", () => {
+        let response = Admin.prototype.searchSingleUserById(dbData.admin[0].id, "admin");
+        expect(response).toBe("Haha!.. Here you go.");
+    });
+    test("Should check user can be searched by Id", () => {
+        let response = Users.prototype.searchSingleUserById(dbData.users[0].id, "user");
+        expect(response).toBe("Haha!.. Here you go.");
     });
     test("Should check if admin can search all users", () => {
        let response = Admin.prototype.searchAllUsers("user");
