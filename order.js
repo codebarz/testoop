@@ -89,7 +89,7 @@ Order.action = {
         if(this.access === "admin") {
             for(let i in dbData.orders) {
                 if(dbData.orders[i].id === this.id) {
-                    //dbData.orders.splice(i, 1);
+                    dbData.orders.splice(i, 1);
                     fs.writeFileSync('db.json', JSON.stringify(dbData, null, 2));
                     result = "The order has been deleted";
                     break;
@@ -104,7 +104,7 @@ Order.action = {
     deleteAllOrders : function(access){
         this.access = access;
         if(access === "admin") {
-            //dbData.orders = [];
+            dbData.orders = [];
             fs.writeFileSync('db.json', JSON.stringify(dbData, null, 2));
             return [];
         }
@@ -114,5 +114,4 @@ Order.action = {
         }
     }
 };
-Order.action.deleteSingleOrder(0, "admin");
 module.exports = Order;

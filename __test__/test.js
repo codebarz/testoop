@@ -1,20 +1,7 @@
 let fs = require('fs');
 const Users = require("../main");
 const Admin = require("../admin");
-//jest.setMock("../admin", require("../__mocks__/admin"));
-const order = require("../order");
-//let mocks = require("../__mocks__/admin");
 let dbData = JSON.parse(fs.readFileSync('db.json'));
-function checkId() {
-    let currentid = 0;
-    if(dbData.orders.length === 0) {
-        currentid = 1;
-    }
-    else {
-        currentid = (dbData.orders[dbData.orders.length - 1].id) + 1
-    }
-    return currentid;
-}
 describe("To test if all normal user activities", () => {
     test("Should check instance of user", () => {
         let newUser = new Users("w", "w@gmail.com", "w", "user");
@@ -125,10 +112,6 @@ describe("To test all administrator privileges", () => {
     });
     test("Should check if admin can delete all orders", () => {
         expect(Admin.handling.deleteAllOrders("admin")).toEqual([]);
-    });
-    test("Should check if admin can delete an order", () => {
-        console.log(dbData.users[-2]);
-        //expect(Admin.handling.deleteSingleOrder(dbData.users[dbData.users.length - 1].id, "admin")).toBe("The order has been deleted")
     });
 });
 
