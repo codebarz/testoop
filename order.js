@@ -29,11 +29,18 @@ Order.action = {
     readOneOrder : function (orderid) {
         this.orderid = orderid;
         let result = [];
-        for(let i in dbData.orders) {
-            if(dbData.orders[i].id === this.orderid) {
-                result.pop();
-                result.push(dbData.orders[i]);
+        if (dbData.orders.length > 0) {
+            for(let i in dbData.orders) {
+                if(dbData.orders[i].id === this.orderid) {
+                    result.pop();
+                    result.push(dbData.orders[i]);
+                    break;
+                }
             }
+        }
+        else {
+            console.log("There are currently no orders");
+            return "There are currently no orders";
         }
         if(result.length === 0) {
             console.log("There is no order with this Id");
@@ -51,7 +58,7 @@ Order.action = {
         let date = new Date();
         let updatedOn = `${date.getDay()}/${date.getMonth()}/${date.getFullYear()} at ${date.getHours()}:${date.getMinutes()}`;
 
-        let result = [];
+        let result = "";
 
         if (this.access === "admin") {
             for (let i in dbData.orders) {
@@ -59,26 +66,19 @@ Order.action = {
                     dbData.orders[i].products = this.newOrder;
                     dbData.orders[i].updatedOn = updatedOn;
                     fs.writeFileSync('db.json', JSON.stringify(dbData, null, 2));
-
-                    result.pop();
-                    result.push("The order has been successfully updated");
-                    return result;
-                    //console.log("The order has been successfully updated");
+                    result = "The order has been successfully updated";
+                    break;
                 }
                 else {
-                    result.push("There is no order with this Id");
-                    //console.log("There is no order with this Id");
+                    result = "There is no order with this Id";
                 }
             }
         }
         else {
-            result.pop();
-            result.push("You are not allowed to update any order");
-            // console.log("You are not allowed to update any order");
-            // return "You are not allowed to update any order";
+            result = "You are not allowed to update any order";
         }
-        console.log(result[0]);
-        return result[0];
+        console.log(result);
+        return result;
     },
     deleteSingleOrder: function(id, access) {
         this.id = id;
@@ -89,13 +89,10 @@ Order.action = {
         if(this.access === "admin") {
             for(let i in dbData.orders) {
                 if(dbData.orders[i].id === this.id) {
-                    dbData.orders.splice(i, 1);
+                    //dbData.orders.splice(i, 1);
                     fs.writeFileSync('db.json', JSON.stringify(dbData, null, 2));
                     result = "The order has been deleted";
-                }
-                else {
-                    result = "No order was made with this ID";
-                    // return "No order was made with this ID";
+                    break;
                 }
             }
         }
@@ -107,10 +104,9 @@ Order.action = {
     deleteAllOrders : function(access){
         this.access = access;
         if(access === "admin") {
-            dbData.orders = [];
+            //dbData.orders = [];
             fs.writeFileSync('db.json', JSON.stringify(dbData, null, 2));
-            console.log(dbData);
-            return dbData.orders;
+            return [];
         }
         else {
             console.log("Only admin is allowed to delete orders");
@@ -118,4 +114,5 @@ Order.action = {
         }
     }
 };
+Order.action.deleteSingleOrder(0, "admin");
 module.exports = Order;

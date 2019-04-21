@@ -150,11 +150,8 @@ Users.prototype = {
 
         let result = "";
 
-        dbData.users.forEach(value => {
-            if (value.id !== this.userid) {
-                result = "There is no user registered with this ID";
-            }
-            else {
+        for(let i in dbData.users) {
+            if (dbData.users[i].id === this.userid) {
                 let newOrder = new Order();
                 let OrderForm = newOrder.constructor.createOrder();
                 OrderForm.products = this.userProducts;
@@ -162,12 +159,15 @@ Users.prototype = {
                 dbData.orders.push(OrderForm);
                 fs.writeFileSync('db.json', JSON.stringify(dbData, null, 2));
                 result = "Your order has been successfully made!.";
+                break;
             }
-        });
+            else {
+                result = "There is no user registered with this ID";
+            }
+        }
         console.log(result);
         return result;
     }
 };
-let newUser = new Users("ainah", "oluwa@gmail.com", "54321", "user");
-newUser.createUser();
+Users.prototype.makeOrder(1, "fish");
 module.exports = Users;

@@ -1,9 +1,9 @@
 let fs = require('fs');
 const Users = require("../main");
 const Admin = require("../admin");
-jest.setMock("../admin", require("../__mocks__/admin"));
+//jest.setMock("../admin", require("../__mocks__/admin"));
 const order = require("../order");
-let mocks = require("../__mocks__/admin");
+//let mocks = require("../__mocks__/admin");
 let dbData = JSON.parse(fs.readFileSync('db.json'));
 function checkId() {
     let currentid = 0;
@@ -81,18 +81,22 @@ describe("To test all administrator privileges", () => {
        let response = Admin.prototype.searchSingleUserByName(dbData.users[dbData.users.length - 1].username, "user");
         expect(response).toBe("Here is the result of the user you searched for");
     });
+    test("Should check if admin can search an admin by name", () => {
+        let response = Admin.prototype.searchSingleUserByName(dbData.admin[0].username, "admin");
+        expect(response).toBe("Here is the result of the admin you searched for");
+    });
     test("Should check if admin can search with wrong details", () => {
        let response = Admin.prototype.searchSingleUserByName("witehox", "user");
+       let responseAdmin = Admin.prototype.searchSingleUserByName("bbb", "admin");
        expect(response).toBe("There is no user registered with this username");
+       expect(responseAdmin).toBe("There is no user registered with this username");
     });
     test("Should check if admin can delete with a wrong id", () => {
-        expect.assertions(1);
         let response = Admin.prototype.deleteSingleUser(0, "user");
         expect(response).toBe("There is no user registered with this ID");
     });
     test("Should check if admin can delete a user", () => {
-        expect.assertions(1);
-        let response = Admin.prototype.deleteSingleUser(1, "user");
+        let response = Admin.prototype.deleteSingleUser(dbData.users[dbData.users.length-1].id, "user");
         expect(response).toBe("Account successfully deleted");
     });
     test("If a user or wrong access tries to delete all users", () => {
@@ -110,16 +114,13 @@ describe("To test all administrator privileges", () => {
         expect(Admin.handling.readOneOrder(0)).toBe("There is no order with this Id");
     });
     test("Should check if admin can read one order", () => {
-        expect(Admin.handling.readOneOrder(dbData.orders[dbData.orders.length - 1].id)).toEqual([dbData.orders[dbData.orders.length - 1]]);
+            expect(Admin.handling.readOneOrder(dbData.orders[0].id)).toEqual([dbData.orders[0]]);
     });
     test("Should check if admin can delete with wrong access level", () => {
         expect(Admin.handling.deleteAllOrders("foreign")).toBe("Only admin is allowed to delete orders");
     });
     test("Should check if admin can delete all orders", () => {
-        expect(Admin.handling.deleteAllOrders("admin")).toEqual(dbData.orders);
-    });
-    test("Should check if admin can delete non-existing order", () => {
-        expect(Admin.handling.deleteSingleOrder(0, "admin")).toBe("No order was made with this ID");
+        expect(Admin.handling.deleteAllOrders("admin")).toEqual([]);
     });
     test("Should check if admin can delete an order", () => {
         console.log(dbData.users[-2]);
@@ -132,4 +133,12 @@ describe("To test all order functionality", () => {
        let toBeTested = Users.prototype.makeOrder(0, "garri", "rice", "beans");
        expect(toBeTested).toBe("There is no user registered with this ID");
    });
+   test("Should check for wrong access level on orders updates", () => {
+       let response = Admin.handling.updateSingleOrder(1, "aaa", "bean");
+       expect(response).toBe("You are not allowed to update any order");
+   });
+    test("Should check if orders can be updated", () => {
+        let response = Admin.handling.updateSingleOrder(1, "admin", "bean");
+        expect(response).toBe("The order has been successfully updated");
+    });
 });

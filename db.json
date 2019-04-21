@@ -51,72 +51,9 @@
     },
     {
       "id": 8,
-      "username": "ainah",
-      "email": "oluwa@gmail.com",
-      "password": "54321",
-      "access": "user"
-    },
-    {
-      "id": 9,
-      "username": "ainah",
-      "email": "oluwa@gmail.com",
-      "password": "54321",
-      "access": "user"
-    },
-    {
-      "id": 10,
-      "username": "ainah",
-      "email": "oluwa@gmail.com",
-      "password": "54321",
-      "access": "user"
-    },
-    {
-      "id": 11,
-      "username": "ainah",
-      "email": "oluwa@gmail.com",
-      "password": "54321",
-      "access": "user"
-    },
-    {
-      "id": 12,
-      "username": "ainah",
-      "email": "oluwa@gmail.com",
-      "password": "54321",
-      "access": "user"
-    },
-    {
-      "id": 13,
-      "username": "ainah",
-      "email": "oluwa@gmail.com",
-      "password": "54321",
-      "access": "user"
-    },
-    {
-      "id": 14,
-      "username": "ainah",
-      "email": "oluwa@gmail.com",
-      "password": "54321",
-      "access": "user"
-    },
-    {
-      "id": 15,
-      "username": "ainah",
-      "email": "oluwa@gmail.com",
-      "password": "54321",
-      "access": "user"
-    },
-    {
-      "id": 16,
-      "username": "ainah",
-      "email": "oluwa@gmail.com",
-      "password": "54321",
-      "access": "user"
-    },
-    {
-      "id": 17,
-      "username": "ainah",
-      "email": "oluwa@gmail.com",
-      "password": "54321",
+      "username": "whitehox",
+      "email": "white@gmail.com",
+      "password": "123",
       "access": "user"
     }
   ],
@@ -141,105 +78,200 @@
       "email": "white@gmail.com",
       "password": "123",
       "access": "admin"
-    },
-    {
-      "id": 6,
-      "username": "whitehox",
-      "email": "white@gmail.com",
-      "password": "123",
-      "access": "admin"
-    },
-    {
-      "id": 7,
-      "username": "whitehox",
-      "email": "white@gmail.com",
-      "password": "123",
-      "access": "admin"
-    },
-    {
-      "id": 8,
-      "username": "whitehox",
-      "email": "white@gmail.com",
-      "password": "123",
-      "access": "admin"
-    },
-    {
-      "id": 11,
-      "username": "whitehox",
-      "email": "white@gmail.com",
-      "password": "123",
-      "access": "admin"
-    },
-    {
-      "id": 12,
-      "username": "whitehox",
-      "email": "white@gmail.com",
-      "password": "123",
-      "access": "admin"
-    },
-    {
-      "id": 13,
-      "username": "whitehox",
-      "email": "white@gmail.com",
-      "password": "123",
-      "access": "admin"
-    },
-    {
-      "id": 14,
-      "username": "whitehox",
-      "email": "white@gmail.com",
-      "password": "123",
-      "access": "admin"
-    },
-    {
-      "id": 15,
-      "username": "whitehox",
-      "email": "white@gmail.com",
-      "password": "123",
-      "access": "admin"
-    },
-    {
-      "id": 16,
-      "username": "whitehox",
-      "email": "white@gmail.com",
-      "password": "123",
-      "access": "admin"
-    },
-    {
-      "id": 17,
-      "username": "whitehox",
-      "email": "white@gmail.com",
-      "password": "123",
-      "access": "admin"
-    },
-    {
-      "id": 18,
-      "username": "whitehox",
-      "email": "white@gmail.com",
-      "password": "123",
-      "access": "admin"
-    },
-    {
-      "id": 19,
-      "username": "whitehox",
-      "email": "white@gmail.com",
-      "password": "123",
-      "access": "admin"
-    },
-    {
-      "id": 20,
-      "username": "whitehox",
-      "email": "white@gmail.com",
-      "password": "123",
-      "access": "admin"
-    },
-    {
-      "id": 21,
-      "username": "whitehox",
-      "email": "white@gmail.com",
-      "password": "123",
-      "access": "admin"
     }
   ],
-  "orders": []
+  "orders": [
+    {
+      "timeOfOrder": "1:52",
+      "dateOfOrder": "21/3/2019",
+      "id": 1,
+      "products": [
+        [
+          "bean"
+        ]
+      ],
+      "userid": 1,
+      "updatedOn": "0/3/2019 at 1:53"
+    },
+    {
+      "timeOfOrder": "1:52",
+      "dateOfOrder": "21/3/2019",
+      "id": 2,
+      "products": [
+        "fish"
+      ],
+      "userid": 1
+    },
+    {
+      "timeOfOrder": "1:52",
+      "dateOfOrder": "21/3/2019",
+      "id": 3,
+      "products": [
+        "fish"
+      ],
+      "userid": 1
+    },
+    {
+      "timeOfOrder": "1:52",
+      "dateOfOrder": "21/3/2019",
+      "id": 4,
+      "products": [
+        "fish"
+      ],
+      "userid": 1
+    },
+    {
+      "timeOfOrder": "1:52",
+      "dateOfOrder": "21/3/2019",
+      "id": 5,
+      "products": [
+        "fish"
+      ],
+      "userid": 1
+    },
+    {
+      "timeOfOrder": "1:52",
+      "dateOfOrder": "21/3/2019",
+      "id": 6,
+      "products": [
+        "fish"
+      ],
+      "userid": 1
+    },
+    {
+      "timeOfOrder": "1:52",
+      "dateOfOrder": "21/3/2019",
+      "id": 7,
+      "products": [
+        "fish"
+      ],
+      "userid": 1
+    },
+    {
+      "timeOfOrder": "1:52",
+      "dateOfOrder": "21/3/2019",
+      "id": 8,
+      "products": [
+        "fish"
+      ],
+      "userid": 1
+    },
+    {
+      "timeOfOrder": "1:52",
+      "dateOfOrder": "21/3/2019",
+      "id": 9,
+      "products": [
+        "fish"
+      ],
+      "userid": 1
+    },
+    {
+      "timeOfOrder": "1:52",
+      "dateOfOrder": "21/3/2019",
+      "id": 10,
+      "products": [
+        "fish"
+      ],
+      "userid": 1
+    },
+    {
+      "timeOfOrder": "1:52",
+      "dateOfOrder": "21/3/2019",
+      "id": 11,
+      "products": [
+        "fish"
+      ],
+      "userid": 1
+    },
+    {
+      "timeOfOrder": "1:52",
+      "dateOfOrder": "21/3/2019",
+      "id": 12,
+      "products": [
+        "fish"
+      ],
+      "userid": 1
+    },
+    {
+      "timeOfOrder": "1:52",
+      "dateOfOrder": "21/3/2019",
+      "id": 13,
+      "products": [
+        "fish"
+      ],
+      "userid": 1
+    },
+    {
+      "timeOfOrder": "1:52",
+      "dateOfOrder": "21/3/2019",
+      "id": 14,
+      "products": [
+        "fish"
+      ],
+      "userid": 1
+    },
+    {
+      "timeOfOrder": "1:52",
+      "dateOfOrder": "21/3/2019",
+      "id": 15,
+      "products": [
+        "fish"
+      ],
+      "userid": 1
+    },
+    {
+      "timeOfOrder": "1:52",
+      "dateOfOrder": "21/3/2019",
+      "id": 16,
+      "products": [
+        "fish"
+      ],
+      "userid": 1
+    },
+    {
+      "timeOfOrder": "1:52",
+      "dateOfOrder": "21/3/2019",
+      "id": 17,
+      "products": [
+        "fish"
+      ],
+      "userid": 1
+    },
+    {
+      "timeOfOrder": "1:52",
+      "dateOfOrder": "21/3/2019",
+      "id": 18,
+      "products": [
+        "fish"
+      ],
+      "userid": 1
+    },
+    {
+      "timeOfOrder": "1:52",
+      "dateOfOrder": "21/3/2019",
+      "id": 19,
+      "products": [
+        "fish"
+      ],
+      "userid": 1
+    },
+    {
+      "timeOfOrder": "1:53",
+      "dateOfOrder": "21/3/2019",
+      "id": 20,
+      "products": [
+        "fish"
+      ],
+      "userid": 1
+    },
+    {
+      "timeOfOrder": "1:53",
+      "dateOfOrder": "21/3/2019",
+      "id": 21,
+      "products": [
+        "fish"
+      ],
+      "userid": 1
+    }
+  ]
 }

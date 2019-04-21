@@ -39,6 +39,7 @@ Admin.prototype.searchSingleUserByName = function(username, accountType) {
             if (dbData.admin[i].username === this.username) {
                 response = "Here is the result of the admin you searched for";
                 console.log(dbData.admin[i]);
+                break;
             } else {
                 response = "There is no user registered with this username";
             }
@@ -70,6 +71,7 @@ Admin.prototype.deleteSingleUser = function(id, accountType) {
                 fs.writeFileSync('db.json', JSON.stringify(dbData, null, 2));
                 console.log(dbData.admin);
                 response = "Account successfully deleted";
+                break;
             }
             else {
                 response = "There is no user registered with this ID";
@@ -83,6 +85,7 @@ Admin.prototype.deleteSingleUser = function(id, accountType) {
                 fs.writeFileSync('db.json', JSON.stringify(dbData, null, 2));
                 console.log(dbData.users);
                 response = "Account successfully deleted";
+                break;
             }
             else {
                 response = "There is no user registered with this ID";
@@ -137,5 +140,4 @@ Admin.handling = {
         return Order.action.deleteAllOrders(this.access);
     }
 };
-Admin.handling.deleteSingleOrder(3, "admin");
 module.exports = Admin;
