@@ -1,6 +1,6 @@
 Object Origin Programing
 =======================
-![](images/coverage.svg)<br><br>
+![](images/coverage.svg) ![](images/jest.svg)<br><br>
 Simple e-commerce functionality with Object Oriented programming in ES5;
 
 Installation
