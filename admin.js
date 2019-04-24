@@ -1,7 +1,6 @@
 let Users = require("./main");
 let Order = require("./order");
-let fs = require('fs');
-let dbData= JSON.parse(fs.readFileSync('db.json'));
+let db = require("./db");
 
 function Admin(username, email, password, access) {
     Users.call(this, username, email, password, access);
@@ -16,11 +15,11 @@ Admin.prototype.searchAllUsers = function(userType) {
 
     if(this.usertype === "admin") {
         response = "Here are your search results for admin";
-        console.log(dbData.admin);
+        console.log(db.admin);
     }
     else if(this.usertype === "user") {
         response = "Here are your search results for users";
-        console.log(dbData.users);
+        console.log(db.users);
     }
     else {
         response = "Kindly use either admin or user as the account type";
@@ -35,10 +34,10 @@ Admin.prototype.searchSingleUserByName = function(username, accountType) {
     let response = "";
 
     if (this.searchType === "admin") {
-        for (let i in dbData.admin) {
-            if (dbData.admin[i].username === this.username) {
+        for (let i in db.admin) {
+            if (db.admin[i].username === this.username) {
                 response = "Here is the result of the admin you searched for";
-                console.log(dbData.admin[i]);
+                console.log("Single user result" + db.admin[i]);
                 break;
             } else {
                 response = "There is no user registered with this username";
@@ -46,10 +45,10 @@ Admin.prototype.searchSingleUserByName = function(username, accountType) {
         }
     }
     else if (this.searchType === "user") {
-        for (let i in dbData.users) {
-            if (dbData.users[i].username === this.username) {
+        for (let i in db.users) {
+            if (db.users[i].username === this.username) {
                 response = "Here is the result of the user you searched for";
-                console.log(dbData.users[i]);
+                console.log("single user result" + db.users[i]);
             } else {
                 response = "There is no user registered with this username";
             }
@@ -61,29 +60,14 @@ Admin.prototype.searchSingleUserByName = function(username, accountType) {
 Admin.prototype.deleteSingleUser = function(id, accountType) {
     this.id = id;
     this.accountType = accountType;
-
+    console.log(db.users);
     let response = "";
 
-    if(this.accountType === "admin") {
-        for(let i in dbData.admin) {
-            if(dbData.admin[i].id === this.id) {
-                dbData.admin.splice(i, 1);
-                fs.writeFileSync('db.json', JSON.stringify(dbData, null, 2));
-                console.log(dbData.admin);
-                response = "Account successfully deleted";
-                break;
-            }
-            else {
-                response = "There is no user registered with this ID";
-            }
-        }
-    }
-    else if(this.accountType === "user") {
-        for(let i in dbData.users) {
-            if(dbData.users[i].id === this.id) {
-                dbData.users.splice(i, 1);
-                fs.writeFileSync('db.json', JSON.stringify(dbData, null, 2));
-                console.log(dbData.users);
+    if(this.accountType === "user") {
+        for(let i in db.users) {
+            if(db.users[i].id === this.id) {
+                db.users.splice(i, 1);
+                console.log(db.users);
                 response = "Account successfully deleted";
                 break;
             }
@@ -104,9 +88,8 @@ Admin.prototype.deleteAllUsers = function (access) {
     let response = "";
 
     if(access === "admin") {
-        dbData.users = [];
-        fs.writeFileSync('db.json', JSON.stringify(dbData, null, 2));
-        console.log(dbData);
+        db.users = [];
+        console.log(db.users);
         response = "All users have been deleted";
     }
     else {
@@ -127,7 +110,7 @@ Admin.handling = {
     updateSingleOrder : function(orderid, access, ...newOrder) {
         this.orderid = orderid;
         this.access = access;
-        this.newOrder = newOrder;
+        this.newOrder = newOrder[0];
         return Order.action.updateSingleOrder(this.orderid, this.access, this.newOrder);
     },
     deleteSingleOrder : function(id, access) {
