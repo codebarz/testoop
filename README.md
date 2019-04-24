@@ -24,3 +24,11 @@ Functionality
 * Admin can read all users
 * Admin can delete a single user
 * Admin can delete all users
+
+**Order**
+* Create an order (User)
+* Read all orders (Admin)
+* Read a single order (Admin)
+* Update an order (Admin)
+* Delete a single order (Admin)
+* Delete all orders (Admin)
