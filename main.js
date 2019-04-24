@@ -1,6 +1,6 @@
 let fs = require('fs');
 let Order = require('./Order');
-let dbData = JSON.parse(fs.readFileSync('db.json'));
+let db = require("./db");
 
 function Users (username, email, password, access) {
     this.username = username;
@@ -14,54 +14,54 @@ Users.prototype = {
         let response = "";
         if(this.access === "users" || this.access === "user") {
             this.id = id;
-            if (dbData.users.length === 0) {
+            if (db.users.length === 0) {
                 this.id = 1;
-                dbData.users.push({
+                db.users.push({
                     id: this.id,
                     username: this.username,
                     email: this.email,
                     password: this.password,
                     access: this.access
                 });
-                fs.writeFileSync('db.json', JSON.stringify(dbData, null, 2));
                 response = "Your user account has been successfully created";
+                console.log(db.users[0]);
             } else {
-                this.id = (dbData.users[dbData.users.length - 1].id) + 1;
-                dbData.users.push({
+                this.id = (db.users[db.users.length - 1].id) + 1;
+                db.users.push({
                     id: this.id,
                     username: this.username,
                     email: this.email,
                     password: this.password,
                     access: this.access
                 });
-                fs.writeFileSync('db.json', JSON.stringify(dbData, null, 2));
                 response = "Your user account has been successfully created";
+                console.log(db.users[0]);
             }
         }
         else if (this.access === "admin") {
             this.id = id;
-            if (dbData.admin.length === 0) {
+            if (db.admin.length === 0) {
                 this.id = 1;
-                dbData.admin.push({
+                db.admin.push({
                     id: this.id,
                     username: this.username,
                     email: this.email,
                     password: this.password,
                     access: this.access
                 });
-                fs.writeFileSync('db.json', JSON.stringify(dbData, null, 2));
                 response = "Your administrator account has been successfully created";
+                console.log(db.admin[0]);
             } else {
-                this.id = (dbData.admin[dbData.admin.length - 1].id) + 1;
-                dbData.admin.push({
+                this.id = (db.admin[db.admin.length - 1].id) + 1;
+                db.admin.push({
                     id: this.id,
                     username: this.username,
                     email: this.email,
                     password: this.password,
                     access: this.access
                 });
-                fs.writeFileSync('db.json', JSON.stringify(dbData, null, 2));
                 response = "Your administrator account has been successfully created";
+                console.log(db.admin[0]);
             }
         }
         else {
@@ -76,18 +76,18 @@ Users.prototype = {
         let result = [];
         let response = "";
             if (this.searchType === "admin") {
-                for(let i in dbData.admin) {
-                    if(dbData.admin[i].id === this.id) {
+                for(let i in db.admin) {
+                    if(db.admin[i].id === this.id) {
                         result.pop();
-                        result.push(dbData.admin[i]);
+                        result.push(db.admin[i]);
                     }
                 }
             }
             else if(this.searchType === "user") {
-                for (let i in dbData.users) {
-                    if(dbData.users[i].id === this.id) {
+                for (let i in db.users) {
+                    if(db.users[i].id === this.id) {
                         result.pop();
-                        result.push(dbData.users[i]);
+                        result.push(db.users[i]);
                     }
                 }
             }
@@ -116,63 +116,30 @@ Users.prototype = {
 
         let response = "";
 
-        if(this.access === "admin") {
-            for(let i in dbData.admin) {
-                if(this.username === dbData.admin[i].username && this.password === dbData.admin[i].password) {
-                    dbData.admin[i].username = this.newUsername;
-                    dbData.admin[i].password = this.newPassword;
-                    dbData.admin[i].email = this.newEmail;
-                    fs.writeFileSync('db.json', JSON.stringify(dbData, null, 2));
-                    response = "Your administrator account has been successfully updated";
-                    break;
-                }
-                else {
-                    response = "Incorrect username or password";
-                }
-            }
-        }
-        else if(this.access === "user") {
-            for(let i in dbData.users) {
-                if(this.username === dbData.users[i].username && this.password === dbData.users[i].password) {
-                    dbData.users[i].username = this.newUsername;
-                    dbData.users[i].password = this.newPassword;
-                    dbData.users[i].email = this.newEmail;
-                    fs.writeFileSync('db.json', JSON.stringify(dbData, null, 2));
+        if(this.access === "user") {
+            for(let i in db.users) {
+                if(this.username === db.users[i].username && this.password === db.users[i].password) {
+                    db.users[i].username = this.newUsername;
+                    db.users[i].password = this.newPassword;
+                    db.users[i].email = this.newEmail;
                     response = "Your user account has been successfully updated";
+                    console.log(db.users[0]);
                     break;
                 }
                 else {
                     response = "Incorrect username or password";
                 }
+                console.log(db.users[i]);
             }
         }
         console.log(response);
         return response;
     },
-    makeOrder : function(userId, ...userProducts) {
-        this.userid = userId;
-        this.userProducts = userProducts;
-
-        let result = "";
-
-        for(let i in dbData.users) {
-            if (dbData.users[i].id === this.userid) {
-                let newOrder = new Order();
-                let OrderForm = newOrder.constructor.createOrder();
-                OrderForm.products = this.userProducts;
-                OrderForm.userid = this.userid;
-                dbData.orders.push(OrderForm);
-                fs.writeFileSync('db.json', JSON.stringify(dbData, null, 2));
-                result = "Your order has been successfully made!.";
-                break;
-            }
-            else {
-                result = "There is no user registered with this ID";
-            }
-        }
-        console.log(result);
-        return result;
+    makeOrder : function(id, userid, ...products) {
+        this.id = id;
+        this.userid = userid;
+        this.products = products;
+        return Order.createOrder(this.id, this.userid, this.products);
     }
 };
-Users.prototype.makeOrder(1, "fish");
 module.exports = Users;

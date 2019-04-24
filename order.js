@@ -1,39 +1,52 @@
-let fs = require('fs');
-let dbData = JSON.parse(fs.readFileSync('db.json'));
+let db = require("./db");
 function Order() {
 }
-Order.createOrder = function(id) {
+Order.createOrder = function(id, userid, ...products) {
     this.id = id;
+    this.userid = userid;
+    this.products = products[0];
+    console.log(this.products);
     let inDate = new Date();
     this.orderTime = `${inDate.getHours()}:${inDate.getMinutes()}`;
     this.orderDate = `${inDate.getDate()}/${inDate.getMonth()}/${inDate.getFullYear()}`;
-    if(dbData.orders.length === 0) {
-        this.id = 1
+
+    if(db.orders.length === 0) {
+        this.id = 1;
+        db.orders.push({
+            timeOfOrder: this.orderTime,
+            dateOfOrder: this.orderDate,
+            id: this.id,
+            userid: this.userid,
+            products : this.products
+        });
     }
     else {
-        this.id = (dbData.orders[dbData.orders.length - 1].id) + 1
+        this.id = (db.orders[db.orders.length - 1].id) + 1;
+        db.orders.push({
+            timeOfOrder: this.orderTime,
+            dateOfOrder: this.orderDate,
+            id: this.id,
+            userid: this.userid,
+            products : this.products
+        });
     }
-    let ret = {
-        timeOfOrder: this.orderTime,
-        dateOfOrder: this.orderDate,
-        id: this.id
-    };
-    console.log(ret);
-    return ret;
+    console.log(db.orders);
+    console.log("Order successfully created");
+    return "Order successfully created";
 };
 Order.action = {
     readAllOrder : function () {
-        console.log(dbData.orders);
-        return dbData.orders;
+        console.log(db.orders);
+        return db.orders;
     },
     readOneOrder : function (orderid) {
         this.orderid = orderid;
         let result = [];
-        if (dbData.orders.length > 0) {
-            for(let i in dbData.orders) {
-                if(dbData.orders[i].id === this.orderid) {
+        if (db.orders.length > 0) {
+            for(let i in db.orders) {
+                if(db.orders[i].id === this.orderid) {
                     result.pop();
-                    result.push(dbData.orders[i]);
+                    result.push(db.orders[i]);
                     break;
                 }
             }
@@ -42,14 +55,8 @@ Order.action = {
             console.log("There are currently no orders");
             return "There are currently no orders";
         }
-        if(result.length === 0) {
-            console.log("There is no order with this Id");
-            return "There is no order with this Id";
-        }
-        else {
             console.log(result);
             return result;
-        }
     },
     updateSingleOrder : function(orderid, access, ...newOrder) {
         this.id = orderid;
@@ -61,16 +68,13 @@ Order.action = {
         let result = "";
 
         if (this.access === "admin") {
-            for (let i in dbData.orders) {
-                if(dbData.orders[i].id === this.id) {
-                    dbData.orders[i].products = this.newOrder;
-                    dbData.orders[i].updatedOn = updatedOn;
-                    fs.writeFileSync('db.json', JSON.stringify(dbData, null, 2));
+            for (let i in db.orders) {
+                if(db.orders[i].id === this.id) {
+                    db.orders[i].products = this.newOrder;
+                    db.orders[i].updatedOn = updatedOn;
                     result = "The order has been successfully updated";
+                    console.log(db.orders);
                     break;
-                }
-                else {
-                    result = "There is no order with this Id";
                 }
             }
         }
@@ -85,13 +89,14 @@ Order.action = {
         this.access = access;
 
         let result = "";
+        console.log(db.orders);
 
         if(this.access === "admin") {
-            for(let i in dbData.orders) {
-                if(dbData.orders[i].id === this.id) {
-                    dbData.orders.splice(i, 1);
-                    fs.writeFileSync('db.json', JSON.stringify(dbData, null, 2));
+            for(let i in db.orders) {
+                if(db.orders[i].id === this.id) {
+                    db.orders.splice(i, 1);
                     result = "The order has been deleted";
+                    console.log("order deleted" + db.orders);
                     break;
                 }
             }
@@ -104,8 +109,8 @@ Order.action = {
     deleteAllOrders : function(access){
         this.access = access;
         if(access === "admin") {
-            dbData.orders = [];
-            fs.writeFileSync('db.json', JSON.stringify(dbData, null, 2));
+            db.orders = [];
+            console.log("Orders deleted" + db.orders);
             return [];
         }
         else {
