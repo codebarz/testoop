@@ -32,3 +32,7 @@ Functionality
 * Update an order (Admin)
 * Delete a single order (Admin)
 * Delete all orders (Admin)
+
+Test Cases 
+----------
+The test case is done using `jest`
