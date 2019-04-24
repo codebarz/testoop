@@ -23,12 +23,11 @@ User.prototype.makeOrder(1, 1, "eba", "milk");
 //Update single order
 Admin.handling.updateSingleOrder(1, "admin", "fish");
 
+//Search all users
 Admin.prototype.searchAllUsers("user");
 
 //Search single user
 Admin.prototype.searchSingleUserByName("michael", "user");
-
-
 
 //Read all order
 Admin.handling.readAllOrder();
@@ -38,6 +37,7 @@ Admin.handling.readOneOrder(1);
 
 //Admin delete user
 Admin.prototype.deleteSingleUser(2, "user");
+
 //Admin delete all users
 Admin.prototype.deleteAllUsers("admin");
 
