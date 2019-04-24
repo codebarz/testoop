@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 22.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 88 20" style="enable-background:new 0 0 88 20;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#555555;}
+	.st1{fill:#FE7D37;}
+	.st2{fill:none;}
+	.st3{enable-background:new    ;}
+	.st4{fill:#FFFFFF;}
+	.st5{font-family:'Verdana';}
+	.st6{font-size:11px;}
+	.st7{letter-spacing:1;}
+</style>
+<g shape-rendering="crispEdges">
+	<path class="st0" d="M0,0h35v20H0V0z"/>
+	<path class="st1" d="M35,0h53v20H35V0z"/>
+</g>
+<g>
+	<rect x="6.2" y="4.5" class="st2" width="25" height="12.8"/>
+	<text transform="matrix(1 0 0 1 6.2432 14)" class="st3"><tspan x="0" y="0" class="st4 st5 st6">np</tspan><tspan x="14.3" y="0" class="st4 st5 st6">m</tspan></text>
+	<rect x="39.3" y="4.5" class="st2" width="43" height="12.8"/>
+	<text transform="matrix(1 0 0 1 39.2573 14)" class="st3"><tspan x="0" y="0" class="st4 st5 st6 st7">v6.4.</tspan><tspan x="36" y="0" class="st4 st5 st6">1</tspan></text>
+</g>
+</svg>
